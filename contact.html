@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Support | North & Vale</title>
+    <link rel="stylesheet" href="retail-styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-container">
+        <div class="logo"><a href="retailer-demo.html">North & Vale<span>Home goods, apparel, and daily essentials</span></a></div>
+        <nav class="main-nav">
+          <a href="retailer-demo.html" class="nav-link">Shop</a>
+          <a href="account.html" class="nav-link">Account</a>
+          <a href="portal.html" class="nav-link">Help</a>
+          <a href="contact.html" class="nav-link active">Contact</a>
+          <a href="index.html" class="nav-link">Amitalux Intelligence</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Customer support</span>
+          <h1 class="page-title">Get in touch</h1>
+          <p>Submit an order issue, start a chat, or send a support email. The result creates a real Amitalux Intelligence case.</p>
+        </div>
+        <strong class="status" data-site-status>Ready</strong>
+      </div>
+
+      <section class="split-layout">
+        <section class="panel">
+          <span>Support form</span>
+          <h3>Send a message</h3>
+          <form data-contact-form>
+            <label id="reason-label" for="reason">
+              Reason for contact
+              <select id="reason" name="reason" aria-labelledby="reason-label" required>
+                <option value="order_status">Where is my order?</option>
+                <option value="returns_exchanges">Returns and exchanges</option>
+                <option value="damaged_incorrect">Damaged or incorrect item</option>
+                <option value="billing_payment">Billing and payment issue</option>
+                <option value="account_help">Account help</option>
+              </select>
+            </label>
+            <label id="name-label" for="name">
+              Full name
+              <input id="name" name="name" autocomplete="name" value="Taylor Morgan" aria-labelledby="name-label" required />
+            </label>
+            <label id="email-label" for="email">
+              Email address
+              <input id="email" name="email" type="email" autocomplete="email" value="taylor@example.com" aria-labelledby="email-label" required />
+            </label>
+            <label id="order-label" for="order_number">
+              Order number
+              <input id="order_number" name="order_number" placeholder="NV-1049" aria-labelledby="order-label" />
+            </label>
+            <label id="owner-label" for="default_owner">
+              Default team owner
+              <select id="default_owner" name="default_owner" aria-labelledby="owner-label">
+                <option>Priya S.</option>
+                <option>Elena R.</option>
+                <option>Marcus J.</option>
+              </select>
+            </label>
+            <label id="message-label" for="message">
+              Message
+              <textarea id="message" name="message" aria-labelledby="message-label" required></textarea>
+            </label>
+            <div class="actions">
+              <button class="accent" type="submit">Submit inquiry</button>
+              <button class="secondary" type="button" data-start-chat>Start chat</button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="panel">
+          <span>Other channels</span>
+          <h3>Support options</h3>
+          <div class="list">
+            <article class="detail-tile">
+              <strong>Live chat</strong>
+              <p>Use the chat action to create a customer-facing case.</p>
+            </article>
+            <article class="detail-tile">
+              <strong>Phone support</strong>
+              <p>Mon to Fri, 9:00 AM to 5:00 PM ET<br />+1 (800) 555-0199</p>
+            </article>
+            <article class="detail-tile">
+              <strong>Direct email</strong>
+              <p>support@northandvale.example</p>
+            </article>
+          </div>
+          <div class="portal-note" style="margin-top: 14px;">
+            <strong>Amitalux Intelligence result</strong>
+            <p data-result-summary>Submit an inquiry to see the created case, routing, tone, and privacy result.</p>
+          </div>
+          <div class="result-grid">
+            <div class="detail-tile"><span>Case</span><strong data-result-case>Waiting</strong></div>
+            <div class="detail-tile"><span>Assigned</span><strong data-result-assigned>Waiting</strong></div>
+            <div class="detail-tile"><span>Tone</span><strong data-result-tone>Waiting</strong></div>
+            <div class="detail-tile"><span>Privacy</span><strong data-result-privacy>Ready</strong></div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer>North & Vale contact page for testing AI-readable form submission.</footer>
+    <script src="retail-data.js"></script>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const defaults = {
+        reason: params.get("reason") || "order_status",
+        order: params.get("order") || "",
+        message: params.get("message") || "I need help with my North & Vale order.",
+        article: params.get("article") || ""
+      };
+
+      function setStatus(text, tone = "green") {
+        const status = $("[data-site-status]");
+        status.textContent = text;
+        status.className = `status ${tone}`;
+      }
+
+      function renderResult(state) {
+        const ticket = state.cases?.[0];
+        if (!ticket) return;
+        $("[data-result-case]").textContent = `${ticket.caseNo} · ${ticket.title}`;
+        $("[data-result-assigned]").textContent = ticket.assignedTo || "Unassigned";
+        $("[data-result-tone]").textContent = ticket.aiAnalysis?.customerTone || ticket.sentiment || ticket.risk;
+        $("[data-result-privacy]").textContent = ticket.message?.includes("[REDACTED_]")
+          ? "Sensitive data redacted"
+          : "No sensitive pattern detected";
+        $("[data-result-summary]").textContent = ticket.aiAnalysis?.primaryContextSummary || ticket.context || ticket.message;
+      }
+
+      function formPayload() {
+        const reason = $("#reason").value;
+        const order = $("#order_number").value.trim();
+        const articleContext = defaults.article ? ` Knowledge article viewed: ${defaults.article}.` : "";
+        return {
+          name: $("#name").value.trim(),
+          email: $("#email").value.trim(),
+          reason,
+          order,
+          owner: $("#default_owner").value,
+          message: `${order ? `Order ${order}: ` : ""}${$("#message").value.trim()}${articleContext}`
+        };
+      }
+
+      $("#reason").value = defaults.reason;
+      $("#order_number").value = defaults.order;
+      $("#message").value = defaults.message;
+
+      $("[data-contact-form]").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        setStatus("Sending", "yellow");
+        const payload = formPayload();
+        try {
+          const state = await postJson("/api/process-inbound-email", {
+            customerName: payload.name,
+            senderEmail: payload.email,
+            defaultAssignedAgent: payload.owner,
+            rawEmailBody: payload.message,
+            title: `Retail support: ${payload.reason}`
+          });
+          renderResult(state);
+          setStatus("Inquiry created", "green");
+        } catch (error) {
+          setStatus("Could not create inquiry", "red");
+        }
+      });
+
+      $("[data-start-chat]").addEventListener("click", async () => {
+        setStatus("Starting chat", "yellow");
+        const payload = formPayload();
+        try {
+          const state = await postJson("/api/cases", {
+            customerName: payload.name,
+            customerEmail: payload.email,
+            channel: "Chat",
+            title: payload.order ? `Retail chat for ${payload.order}` : "Retail customer chat",
+            message: payload.message,
+            defaultAssignedAgent: payload.owner
+          });
+          renderResult(state);
+          setStatus("Chat case created", "green");
+        } catch (error) {
+          setStatus("Could not start chat", "red");
+        }
+      });
+    </script>
+  </body>
+</html>

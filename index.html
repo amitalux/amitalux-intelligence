@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amitalux Intelligence for Customer Care</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">Intelligence</div>
+      <button class="nav active" data-view="yc-demo">YC Demo</button>
+      <div class="nav-label">Portals</div>
+      <button class="nav" data-view="dashboard">Dashboard</button>
+      <button class="nav" data-view="customer-portal">Customer Portal</button>
+      <button class="nav" data-view="agent-portal">Agent Portal</button>
+      <button class="nav" data-view="supervisor-portal">Supervisor Portal</button>
+      <button class="nav" data-view="admin-portal">Admin Portal</button>
+      <div class="nav-label">Workflows</div>
+      <button class="nav" data-view="email-intake">AI Email Intake</button>
+      <button class="nav" data-view="closed-conversations">Closed Cases</button>
+      <button class="nav" data-view="ticket-history">Ticket History</button>
+      <button class="nav" data-view="phone-ai">Phone AI</button>
+      <button class="nav" data-view="automation-tasks">Automation Tasks</button>
+      <div class="nav-label">Demo depth</div>
+      <button class="nav" data-view="workbench">Live Workbench</button>
+      <button class="nav" data-view="reports">Reports</button>
+      <button class="nav" data-view="use-cases">Use Cases</button>
+      <button class="nav" data-view="assist">Agent Assist</button>
+      <button class="nav" data-view="agent-profile">Agent Profile</button>
+      <button class="nav" data-view="customer-profile">Customer Profile</button>
+      <button class="nav" data-view="customers">Customers</button>
+      <button class="nav" data-view="memory">Memory</button>
+      <button class="nav" data-view="data-health">Data Health</button>
+      <button class="nav" data-view="crm">CRM Problems</button>
+      <button class="nav" data-view="privacy">Privacy</button>
+      <button class="nav" data-view="integrations">Integrations</button>
+    </aside>
+
+    <main>
+      <header>
+        <p>Intelligence, by Amitalux</p>
+        <h1 data-title>YC Demo</h1>
+      </header>
+
+      <section class="view active" data-panel="yc-demo">
+        <div class="hero-card">
+          <span>YC-ready prototype</span>
+          <h2>Amitalux Intelligence for Customer Care turns support into relationship repair.</h2>
+          <p>
+            This prototype shows a full SaaS loop: a customer sends a chat or email, the agent gets context and an AI
+            response draft, and the admin sees queue health, CSAT, history, and stale data signals update.
+          </p>
+        </div>
+
+        <div class="stat-grid">
+          <section class="card status-card">
+            <div class="card-head">
+              <div>
+                <span>Problem</span>
+                <h3>Small teams lose customers in messy support moments</h3>
+              </div>
+            </div>
+            <p>They miss promises, forget context, answer coldly, and operate from stale customer data.</p>
+          </section>
+          <section class="card"><span>Buyer</span><h3>Small and medium sized businesses</h3><p>Service companies, specialty retail, hospitality, healthcare practices, studios, and growing local operators.</p></section>
+          <section class="card"><span>Wedge</span><h3>Square-first care</h3><p>Start where small businesses already keep customer, booking, and payment context.</p></section>
+          <section class="card"><span>Moat</span><h3>Relationship memory</h3><p>Customer preferences, frustration triggers, promises, and repair paths improve over time.</p></section>
+        </div>
+
+        <div class="portal-grid">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Demo path</span>
+                <h3>Show the product in 3 minutes</h3>
+              </div>
+              <strong>Start here</strong>
+            </div>
+            <div class="scenario-list">
+              <button class="scenario-button" data-demo-jump="customer-portal">
+                <strong>1. Customer sends a message</strong>
+                <span>Customer Portal</span>
+                <p>Submit a chat or email-style issue from Maya.</p>
+              </button>
+              <button class="scenario-button" data-demo-jump="agent-portal">
+                <strong>2. Agent resolves with AI</strong>
+                <span>Agent Portal</span>
+                <p>Run AI analysis, approve the reply, send it, and close the case.</p>
+              </button>
+              <button class="scenario-button" data-demo-jump="phone-ai">
+                <strong>3. AI monitors a phone call</strong>
+                <span>Phone AI</span>
+                <p>Watch Amitalux Intelligence take notes, sense tone, and coach the agent during a call.</p>
+              </button>
+              <button class="scenario-button" data-demo-jump="supervisor-portal">
+                <strong>4. Supervisor manages service health</strong>
+                <span>Supervisor Portal</span>
+                <p>Review queue pressure, escalations, CSAT, agent performance, and follow-up promises.</p>
+              </button>
+              <button class="scenario-button" data-demo-jump="admin-portal">
+                <strong>5. Admin controls the system</strong>
+                <span>Admin Portal</span>
+                <p>Review automation, data health, privacy, integrations, and audit controls.</p>
+              </button>
+              <a class="scenario-button" href="retailer-demo.html">
+                <strong>6. Test from a retailer site</strong>
+                <span>Mock storefront</span>
+                <p>Create realistic online retail issues from a customer-facing website.</p>
+              </a>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Why now</span>
+                <h3>AI makes high-touch service affordable</h3>
+              </div>
+            </div>
+            <p>
+              Large CRMs manage records and tickets. Amitalux Intelligence focuses on the vulnerable moment when a customer is
+              frustrated, confused, or disappointed and the business needs to respond with memory, care, and action.
+            </p>
+            <div class="use-case-grid">
+              <div><span>Not CRM-first</span><strong>Care-first</strong><p>Built around the customer feeling remembered.</p></div>
+              <div><span>Not ticket-only</span><strong>Resolution-first</strong><p>Tracks promises, options, and repair paths.</p></div>
+              <div><span>Not enterprise-heavy</span><strong>Small-business simple</strong><p>Designed for teams without CRM consultants.</p></div>
+            </div>
+          </section>
+
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Status</span>
+                <h3>What is functioning today</h3>
+              </div>
+              <strong>Backend-backed MVP</strong>
+            </div>
+            <div class="two-column-list">
+              <div>
+                <h3>Working now</h3>
+                <ul>
+                  <li>Customer, Agent, Supervisor, and Admin portals.</li>
+                  <li>Phone AI monitoring with call notes and tone guidance.</li>
+                  <li>Backend case creation and case actions.</li>
+                  <li>Persistent workspace state on Netlify.</li>
+                  <li>Customer profiles, agent profiles, reports, and history.</li>
+                  <li>SaaS workspace boundary in the backend.</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Next for paid beta</h3>
+                <ul>
+                  <li>Clerk login and business organizations.</li>
+                  <li>Postgres production database.</li>
+                  <li>Real AI provider key.</li>
+                  <li>Real inbound and outbound email.</li>
+                  <li>Embeddable website chat widget.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view dashboard-view" data-panel="dashboard">
+        <div class="hero-card compact-hero dashboard-hero">
+          <span>Custom dashboard</span>
+          <h2>Each team can keep the metrics that matter without crowding the workspace.</h2>
+          <p>
+            Choose the cards that belong on the dashboard. The layout stays compact so leaders can scan service health,
+            volume, queue pressure, CSAT, agent performance, automation, and data quality without feeling buried.
+          </p>
+        </div>
+
+        <div class="dashboard-layout">
+          <section class="card dashboard-controls">
+            <div class="card-head">
+              <div>
+                <span>Customize</span>
+                <h3>Visible dashboard cards</h3>
+              </div>
+              <strong data-dashboard-count></strong>
+            </div>
+            <div class="dashboard-toggle-list" data-dashboard-controls></div>
+          </section>
+
+          <section class="dashboard-surface">
+            <div class="dashboard-toolbar">
+              <div>
+                <span>Today</span>
+                <h3>Customer care operating dashboard</h3>
+              </div>
+              <div class="dashboard-mode">
+                <button class="active" data-dashboard-preset="supervisor">Supervisor</button>
+                <button data-dashboard-preset="admin">Admin</button>
+                <button data-dashboard-preset="executive">Executive</button>
+              </div>
+            </div>
+            <div class="dashboard-card-grid" data-dashboard-grid></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="email-intake">
+        <div class="hero-card compact-hero">
+          <span>Inbound email automation</span>
+          <h2>Amitalux Intelligence parses raw emails, scrubs sensitive data, detects tone, and routes the ticket.</h2>
+          <p>
+            This simulates a real inbound support email. The backend redacts sensitive patterns before AI analysis, then
+            assigns the case through the live out-of-office routing registry.
+          </p>
+        </div>
+        <div class="portal-grid">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Email source</span>
+                <h3>Process inbound email</h3>
+              </div>
+              <strong data-email-intake-status>Ready</strong>
+            </div>
+            <label>
+              Sender email
+              <input data-intake-sender value="newcustomer@example.com" />
+            </label>
+            <label>
+              Default assigned agent
+              <select data-intake-agent></select>
+            </label>
+            <label>
+              Raw email body
+              <textarea data-intake-body>I am still waiting on help with order #A1049. I was charged twice and nobody has replied. My card is 4111 1111 1111 1111 and password=temp123.</textarea>
+            </label>
+            <div class="actions">
+              <button data-process-email>Process email</button>
+              <button class="secondary" data-view-link="agent-portal">Open agent queue</button>
+            </div>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Result</span>
+                <h3>What Amitalux Intelligence created</h3>
+              </div>
+              <strong data-intake-result-label>Waiting</strong>
+            </div>
+            <dl>
+              <div><dt>Case</dt><dd data-intake-case></dd></div>
+              <div><dt>Assigned to</dt><dd data-intake-assigned></dd></div>
+              <div><dt>Tone</dt><dd data-intake-tone></dd></div>
+              <div><dt>Privacy</dt><dd data-intake-privacy></dd></div>
+              <div><dt>Summary</dt><dd data-intake-summary></dd></div>
+            </dl>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="customer-portal">
+        <div class="hero-card">
+          <span>Customer-facing experience</span>
+          <h2>Customers can email or chat with the business from one simple portal.</h2>
+          <p>
+            Messages enter the real backend queue, appear in the Agent Portal, update Supervisor service metrics, and
+            preserve the customer-facing thread so people can see what was sent back.
+          </p>
+        </div>
+
+        <div class="portal-grid">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Signup</span>
+                <h3>Create customer record</h3>
+              </div>
+              <strong data-signup-status>Ready</strong>
+            </div>
+            <label>
+              Full name
+              <input data-signup-name value="Avery Brooks" />
+            </label>
+            <label>
+              Email address
+              <input data-signup-email value="avery@example.com" />
+            </label>
+            <label>
+              Phone
+              <input data-signup-phone value="(555) 014-2026" />
+            </label>
+            <label>
+              Preferred channel
+              <select data-signup-channel>
+                <option>Email</option>
+                <option>Chat</option>
+                <option>SMS</option>
+              </select>
+            </label>
+            <div class="actions">
+              <button data-create-customer-record>Create record</button>
+            </div>
+            <p class="helper-text" data-signup-backup>
+              If online sync fails, Amitalux Intelligence keeps a backup customer record in this browser so the business can still help the customer.
+            </p>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>New message</span>
+                <h3>Contact the business</h3>
+              </div>
+              <strong data-customer-send-status>Ready</strong>
+            </div>
+            <label>
+              Email address
+              <input data-portal-email value="maya@example.com" />
+            </label>
+            <label>
+              Channel
+              <select data-portal-channel>
+                <option>Chat</option>
+                <option>Email</option>
+              </select>
+            </label>
+            <label>
+              Message
+              <textarea data-portal-message>I still need help with my late fee. Can someone please look at this today?</textarea>
+            </label>
+            <div class="actions">
+              <button data-submit-customer-message>Send message</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Chat</span>
+                <h3>Conversation thread</h3>
+              </div>
+              <strong data-customer-thread-count></strong>
+            </div>
+            <div class="conversation-thread" data-customer-thread></div>
+          </section>
+
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Email</span>
+                <h3>Customer-facing emails</h3>
+              </div>
+              <strong>Visible to customer</strong>
+            </div>
+            <div class="email-list" data-customer-emails></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="agent-portal">
+        <div class="hero-card">
+          <span>Agent workspace</span>
+          <h2>Agents handle live customer emails and chats with full context.</h2>
+          <p>
+            The same customer messages from the Customer Portal appear here. Agents can analyze, approve, send, and
+            close cases while Amitalux Intelligence keeps the profile, timeline, history, and admin reporting in sync.
+          </p>
+        </div>
+
+        <div class="agent-grid">
+          <section class="card queue-summary-card">
+            <div class="card-head">
+              <div>
+                <span>Shared queue</span>
+                <h3>Open work</h3>
+              </div>
+              <strong data-agent-queue-count></strong>
+            </div>
+            <div class="queue-metrics">
+              <div><span>Unassigned</span><strong data-agent-unassigned></strong></div>
+              <div><span>Urgent</span><strong data-agent-urgent></strong></div>
+              <div><span>Assigned to you</span><strong data-agent-assigned></strong></div>
+            </div>
+            <div class="actions work-actions">
+              <button class="secondary" data-view-link="closed-conversations">View closed cases</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Queue</span>
+                <h3>Open conversations</h3>
+              </div>
+              <strong>Shared</strong>
+            </div>
+            <div class="case-list scroll-panel" data-agent-cases></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Conversation</span>
+                <h3 data-agent-case-title></h3>
+              </div>
+              <strong class="status-pill" data-agent-case-status></strong>
+            </div>
+            <dl>
+              <div><dt>Customer</dt><dd data-agent-case-customer></dd></div>
+              <div><dt>Customer profile</dt><dd><button class="inline-link" data-open-customer-profile>Open profile</button></dd></div>
+              <div><dt>Ticket history</dt><dd><button class="inline-link" data-open-ticket-history>Open history</button></dd></div>
+              <div><dt>Assigned agent</dt><dd data-agent-case-owner></dd></div>
+              <div><dt>Channel</dt><dd data-agent-case-channel></dd></div>
+              <div><dt>Sentiment</dt><dd data-agent-case-sentiment></dd></div>
+              <div><dt>Context</dt><dd data-agent-case-context></dd></div>
+            </dl>
+            <div class="conversation-thread scroll-panel" data-agent-conversation></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Reply</span>
+                <h3>Agent response</h3>
+              </div>
+            </div>
+            <textarea data-agent-reply></textarea>
+            <div class="actions work-actions">
+              <button data-agent-run-ai>Run AI analysis</button>
+              <button class="secondary" data-agent-approve>Approve reply</button>
+              <button class="secondary" data-agent-send>Send reply</button>
+              <button class="secondary" data-claim-case>Claim ticket</button>
+              <button class="secondary" data-agent-close>Close case</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="closed-conversations">
+        <div class="hero-card compact-hero">
+          <span>Closed conversations</span>
+          <h2>Resolved tickets move out of the active agent queue.</h2>
+          <p>Closed tickets remain searchable for QA, coaching, customer history, and audit review.</p>
+        </div>
+        <div class="ops-grid">
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Archive</span>
+                <h3>Closed cases</h3>
+              </div>
+              <strong data-closed-count></strong>
+            </div>
+            <div class="case-list" data-closed-cases></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="ticket-history">
+        <div class="hero-card compact-hero">
+          <span>Ticket audit trail</span>
+          <h2 data-history-case-title></h2>
+          <p data-history-case-summary></p>
+        </div>
+        <div class="ops-grid">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Case facts</span>
+                <h3>Audit details</h3>
+              </div>
+              <strong class="status-pill" data-history-case-status></strong>
+            </div>
+            <dl>
+              <div><dt>Case number</dt><dd data-history-case-no></dd></div>
+              <div><dt>Customer</dt><dd data-history-customer></dd></div>
+              <div><dt>Created</dt><dd data-history-created></dd></div>
+              <div><dt>First response</dt><dd data-history-first-response></dd></div>
+              <div><dt>Closed</dt><dd data-history-closed></dd></div>
+            </dl>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Conversation history</span>
+                <h3>Messages on this case</h3>
+              </div>
+            </div>
+            <div class="conversation-thread scroll-panel" data-history-conversation></div>
+          </section>
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Timeline</span>
+                <h3>Case progression</h3>
+              </div>
+            </div>
+            <div class="timeline" data-history-timeline></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="phone-ai">
+        <div class="hero-card">
+          <span>Phone support intelligence</span>
+          <h2>Amitalux Intelligence listens during support calls, takes notes, and coaches the agent in real time.</h2>
+          <p>
+            For phone support, the AI monitors the call with consent, understands the customer’s tone, watches how the
+            customer responds to the agent’s voice, and saves a clean call summary to the customer record.
+          </p>
+        </div>
+
+        <div class="phone-layout">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Call control</span>
+                <h3 data-phone-customer></h3>
+              </div>
+              <strong class="status-pill" data-phone-status></strong>
+            </div>
+            <dl>
+              <div><dt>Case</dt><dd data-phone-case></dd></div>
+              <div><dt>Agent</dt><dd data-phone-agent></dd></div>
+              <div><dt>Consent</dt><dd data-phone-consent></dd></div>
+              <div><dt>Privacy</dt><dd>Call notes are summarized. Sensitive details should be redacted before storage.</dd></div>
+            </dl>
+            <div class="actions work-actions">
+              <button data-start-phone-monitor>Start call monitor</button>
+              <button class="secondary" data-advance-phone-call>Advance call</button>
+              <button class="secondary" data-save-call-notes>Save notes to profile</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Customer tone</span>
+                <h3 data-phone-tone></h3>
+              </div>
+              <strong data-phone-urgency></strong>
+            </div>
+            <p data-phone-tone-detail></p>
+            <div class="meter"><span data-phone-tone-meter></span></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Agent voice response</span>
+                <h3 data-agent-voice></h3>
+              </div>
+              <strong data-agent-voice-effect></strong>
+            </div>
+            <p data-agent-voice-detail></p>
+            <div class="meter voice-meter"><span data-agent-voice-meter></span></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Live transcript</span>
+                <h3>What Amitalux Intelligence hears</h3>
+              </div>
+            </div>
+            <div class="conversation-thread" data-phone-transcript></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Real-time notes</span>
+                <h3>AI call notes</h3>
+              </div>
+            </div>
+            <textarea data-phone-notes></textarea>
+          </section>
+
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Agent coaching</span>
+                <h3>What the agent should do next</h3>
+              </div>
+              <strong data-phone-next-action></strong>
+            </div>
+            <div class="history-table" data-phone-coaching></div>
+          </section>
+
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Saved customer memory</span>
+                <h3>What Amitalux Intelligence will remember after the call</h3>
+              </div>
+            </div>
+            <div class="two-column-list">
+              <div>
+                <h3>Call summary</h3>
+                <p data-phone-summary></p>
+              </div>
+              <div>
+                <h3>Memory update</h3>
+                <p data-phone-memory></p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="automation-tasks">
+        <div class="hero-card compact-hero">
+          <span>Automation work queue</span>
+          <h2>Amitalux Intelligence creates the next task before the team has to remember it.</h2>
+          <p>
+            Follow-ups, stale-data reviews, SLA checks, callbacks, and CSAT requests are tied to the customer, case
+            number, owner, due time, and audit history.
+          </p>
+        </div>
+
+        <div class="stat-grid">
+          <section class="card status-card" data-automation-health-card>
+            <div class="card-head">
+              <div>
+                <span>Automation health</span>
+                <h3 data-automation-health-title></h3>
+              </div>
+              <strong class="status-pill" data-automation-health></strong>
+            </div>
+            <p data-automation-health-summary></p>
+          </section>
+          <section class="card"><span>Open tasks</span><h3 data-automation-open></h3><p data-automation-open-detail></p></section>
+          <section class="card"><span>High priority</span><h3 data-automation-high></h3><p>Needs admin or owner attention.</p></section>
+          <section class="card"><span>Completed</span><h3 data-automation-done></h3><p>Logged to the audit trail.</p></section>
+        </div>
+
+        <div class="ops-grid">
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Queue</span>
+                <h3>Open automation tasks</h3>
+              </div>
+              <strong data-automation-queue-label></strong>
+            </div>
+            <div class="queue-list scroll-panel" data-automation-list></div>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Completed</span>
+                <h3>Recent automation history</h3>
+              </div>
+              <strong>Audit ready</strong>
+            </div>
+            <div class="history-table" data-automation-completed></div>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>What creates tasks</span>
+                <h3>Automation triggers</h3>
+              </div>
+              <strong>Live</strong>
+            </div>
+            <div class="scenario-list">
+              <article class="empty-state"><strong>Reply sent</strong><p>Create written confirmation and promise follow-up.</p></article>
+              <article class="empty-state"><strong>Case closed</strong><p>Create CSAT check and customer memory review.</p></article>
+              <article class="empty-state"><strong>Phone notes saved</strong><p>Create callback or written-summary task when needed.</p></article>
+              <article class="empty-state"><strong>Stale data detected</strong><p>Create admin review before the next campaign or renewal message.</p></article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="supervisor-portal">
+        <div class="hero-card">
+          <span>Supervisor workspace</span>
+          <h2>Supervisors manage the service floor without taking over the agent's workspace.</h2>
+          <p>
+            This portal focuses on queue health, escalations, agent performance, CSAT, and promises that need follow-up.
+            It is for coaching and daily operations, not system configuration.
+          </p>
+        </div>
+
+        <div class="stat-grid">
+          <section class="card status-card" data-supervisor-health-card>
+            <div class="card-head">
+              <div>
+                <span>Service health</span>
+                <h3 data-supervisor-health-title></h3>
+              </div>
+              <strong class="status-pill" data-supervisor-health></strong>
+            </div>
+            <p data-supervisor-health-summary></p>
+          </section>
+          <section class="card"><span>Open cases</span><h3 data-supervisor-open></h3><p data-supervisor-open-detail></p></section>
+          <section class="card"><span>First response</span><h3 data-supervisor-response></h3><p data-supervisor-response-detail></p></section>
+          <section class="card"><span>CSAT</span><h3 data-supervisor-csat></h3><p data-supervisor-csat-detail></p></section>
+        </div>
+
+        <div class="ops-grid">
+          <section class="card">
+            <div class="card-head"><div><span>Queue</span><h3>Open conversations</h3></div><strong data-supervisor-queue-label></strong></div>
+            <div class="queue-list" data-supervisor-queue></div>
+          </section>
+          <section class="card">
+            <div class="card-head"><div><span>Escalations</span><h3>Needs supervisor attention</h3></div><strong data-supervisor-escalation-label></strong></div>
+            <div class="queue-list" data-supervisor-escalations></div>
+          </section>
+          <section class="card">
+            <div class="card-head"><div><span>Agent report</span><h3>Team performance</h3></div><strong>Live</strong></div>
+            <div class="agent-list" data-supervisor-agents></div>
+          </section>
+          <section class="card">
+            <div class="card-head"><div><span>Customer sentiment</span><h3>CSAT drivers</h3></div><strong data-supervisor-csat-risk></strong></div>
+            <div class="csat-breakdown" data-supervisor-csat-breakdown></div>
+          </section>
+          <section class="card wide-card">
+            <div class="card-head"><div><span>Case progression</span><h3>Current priority case</h3></div><strong data-supervisor-case-status></strong></div>
+            <div class="timeline" data-supervisor-case-progression></div>
+          </section>
+          <section class="card wide-card">
+            <div class="card-head"><div><span>Promises</span><h3>Follow-up tasks</h3></div><strong data-supervisor-task-label></strong></div>
+            <div class="queue-list" data-supervisor-tasks></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="admin-portal">
+        <div class="hero-card">
+          <span>Admin operations</span>
+          <h2>Admins configure, govern, and audit the customer care system.</h2>
+          <p>
+            This portal is for system controls: automation tasks, data health, privacy safeguards, integrations,
+            access roles, and the audit history behind customer-facing actions.
+          </p>
+        </div>
+
+        <div class="stat-grid">
+          <section class="card status-card" data-admin-health-card>
+            <div class="card-head">
+              <div>
+                <span>System health</span>
+                <h3 data-admin-health-title></h3>
+              </div>
+              <strong class="status-pill" data-admin-health></strong>
+            </div>
+            <p data-admin-health-summary></p>
+          </section>
+          <section class="card"><span>Open queue</span><h3 data-admin-open></h3><p data-admin-open-detail></p></section>
+          <section class="card"><span>Automation</span><h3 data-admin-handled></h3><p data-admin-handled-detail></p></section>
+          <section class="card"><span>Privacy</span><h3 data-admin-csat></h3><p data-admin-csat-detail></p></section>
+        </div>
+
+        <div class="ops-grid">
+          <section class="card">
+            <div class="card-head"><div><span>System queues</span><h3>Workspace load</h3></div><strong data-admin-queue-label></strong></div>
+            <div class="queue-list" data-admin-queue></div>
+          </section>
+          <section class="card">
+            <div class="card-head"><div><span>Access</span><h3>Role controls</h3></div><strong>Governed</strong></div>
+            <div class="agent-list" data-admin-agents></div>
+          </section>
+          <section class="card">
+            <div class="card-head"><div><span>Data health</span><h3>Stale records</h3></div><strong>Admin review</strong></div>
+            <div class="queue-list" data-admin-stale></div>
+          </section>
+          <section class="card">
+            <div class="card-head"><div><span>Automation</span><h3>Open tasks</h3></div><strong data-admin-automation-label></strong></div>
+            <div class="queue-list" data-admin-automation></div>
+          </section>
+          <section class="card">
+            <div class="card-head"><div><span>History</span><h3>Audit trail</h3></div><strong>Persistent</strong></div>
+            <div class="history-table" data-admin-history></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="workbench">
+        <div class="hero-card">
+          <span>Functioning demo</span>
+          <h2>Handle live customer cases and watch Amitalux Intelligence update the business.</h2>
+          <p>
+            Select a case, run AI analysis, approve the response, send it, and close the case. Queue status, history,
+            CSAT, volume, customer memory, and case progression update as the work happens.
+          </p>
+        </div>
+
+        <div class="stat-grid">
+          <section class="card status-card" data-live-health-card>
+            <div class="card-head">
+              <div>
+                <span>Live status</span>
+                <h3 data-live-health-title></h3>
+              </div>
+              <strong class="status-pill" data-live-health></strong>
+            </div>
+            <p data-live-health-summary></p>
+          </section>
+          <section class="card">
+            <span>Open queue</span>
+            <h3 data-live-open></h3>
+            <p data-live-open-detail></p>
+          </section>
+          <section class="card">
+            <span>Handled today</span>
+            <h3 data-live-handled></h3>
+            <p data-live-handled-detail></p>
+          </section>
+          <section class="card">
+            <span>Live CSAT</span>
+            <h3 data-live-csat></h3>
+            <p data-live-csat-detail></p>
+          </section>
+        </div>
+
+        <div class="workbench-grid">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Queue</span>
+                <h3>Incoming cases</h3>
+              </div>
+              <strong data-live-queue-label></strong>
+            </div>
+            <div class="case-list" data-live-cases></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Selected case</span>
+                <h3 data-live-case-title></h3>
+              </div>
+              <strong class="status-pill" data-live-case-status></strong>
+            </div>
+            <dl>
+              <div><dt>Customer</dt><dd data-live-case-customer></dd></div>
+              <div><dt>Channel</dt><dd data-live-case-channel></dd></div>
+              <div><dt>Sentiment</dt><dd data-live-case-sentiment></dd></div>
+              <div><dt>Business context</dt><dd data-live-case-context></dd></div>
+            </dl>
+            <div class="actions work-actions">
+              <button data-run-ai>Run AI analysis</button>
+              <button class="secondary" data-approve-reply>Approve reply</button>
+              <button class="secondary" data-send-reply>Send reply</button>
+              <button class="secondary" data-close-case>Close case</button>
+              <button class="secondary" data-new-case>Add new case</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>AI response</span>
+                <h3>Draft and resolution plan</h3>
+              </div>
+            </div>
+            <textarea data-live-reply></textarea>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Case progression</span>
+                <h3>Live timeline</h3>
+              </div>
+            </div>
+            <div class="timeline" data-live-timeline></div>
+          </section>
+
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>History</span>
+                <h3>What changed while using the demo</h3>
+              </div>
+              <strong>Live audit trail</strong>
+            </div>
+            <div class="history-table" data-live-history></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="reports">
+        <div class="hero-card">
+          <span>Live operating view</span>
+          <h2>Amitalux Intelligence shows what is happening, what is changing, and where help is needed.</h2>
+          <p>
+            Admins can see red, yellow, and green health, customer volume, queue pressure, agent performance, CSAT,
+            case progression, and full history without digging through disconnected tools.
+          </p>
+        </div>
+
+        <div class="stat-grid">
+          <section class="card status-card" data-health-card>
+            <div class="card-head">
+              <div>
+                <span>Today</span>
+                <h3>Customer care health</h3>
+              </div>
+              <strong class="status-pill" data-overall-status></strong>
+            </div>
+            <p data-overall-summary></p>
+          </section>
+          <section class="card">
+            <span>Volume</span>
+            <h3 data-volume-total></h3>
+            <p data-volume-change></p>
+          </section>
+          <section class="card">
+            <span>Queue</span>
+            <h3 data-queue-total></h3>
+            <p data-queue-summary></p>
+          </section>
+          <section class="card">
+            <span>CSAT</span>
+            <h3 data-csat-score></h3>
+            <p data-csat-change></p>
+          </section>
+        </div>
+
+        <div class="ops-grid">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>How volume is changing</span>
+                <h3>Channel volume</h3>
+              </div>
+              <strong data-volume-label></strong>
+            </div>
+            <div class="bar-chart" data-volume-chart></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Live queue</span>
+                <h3>What needs attention</h3>
+              </div>
+              <strong data-queue-risk></strong>
+            </div>
+            <div class="queue-list" data-queue-list></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Agent report</span>
+                <h3>Team performance</h3>
+              </div>
+              <strong>AI assisted</strong>
+            </div>
+            <div class="agent-list" data-agent-report></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>CSAT drivers</span>
+                <h3>Customer sentiment</h3>
+              </div>
+              <strong data-csat-risk></strong>
+            </div>
+            <div class="csat-breakdown" data-csat-breakdown></div>
+          </section>
+
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Case progression</span>
+                <h3>Maya Thompson case</h3>
+              </div>
+              <strong data-case-status></strong>
+            </div>
+            <div class="timeline" data-case-progression></div>
+          </section>
+
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>History</span>
+                <h3>Recent customer activity</h3>
+              </div>
+              <strong>Audit ready</strong>
+            </div>
+            <div class="history-table" data-history-table></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="use-cases">
+        <div class="hero-card">
+          <span>Working demo flows</span>
+          <h2>Pick a real customer situation and watch Amitalux Intelligence connect the work.</h2>
+          <p>
+            Each use case updates the customer, sentiment, queue impact, next action, AI reply, case progression, and
+            business learning so the product feels like one connected system.
+          </p>
+        </div>
+
+        <div class="use-case-layout">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Scenarios</span>
+                <h3>Choose a use case</h3>
+              </div>
+            </div>
+            <div class="scenario-list" data-use-case-list></div>
+          </section>
+
+          <section class="card use-case-detail">
+            <div class="card-head">
+              <div>
+                <span data-use-case-type></span>
+                <h3 data-use-case-title></h3>
+              </div>
+              <strong class="status-pill" data-use-case-status></strong>
+            </div>
+            <p data-use-case-summary></p>
+            <div class="use-case-grid">
+              <div>
+                <span>Customer</span>
+                <strong data-use-case-customer></strong>
+                <p data-use-case-context></p>
+              </div>
+              <div>
+                <span>Queue impact</span>
+                <strong data-use-case-queue></strong>
+                <p data-use-case-queue-detail></p>
+              </div>
+              <div>
+                <span>AI action</span>
+                <strong data-use-case-action></strong>
+                <p data-use-case-action-detail></p>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Connected case progression</span>
+                <h3>What happens next</h3>
+              </div>
+            </div>
+            <div class="timeline" data-use-case-timeline></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Personal AI response</span>
+                <h3>Customer-facing draft</h3>
+              </div>
+            </div>
+            <textarea data-use-case-reply></textarea>
+          </section>
+
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Business learning</span>
+                <h3>What Amitalux Intelligence remembers or improves</h3>
+              </div>
+            </div>
+            <div class="history-table" data-use-case-learning></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="assist">
+        <div class="hero-card">
+          <span>Instant customer recognition</span>
+          <h2>When a customer gives an email, Amitalux Intelligence pulls up the whole story.</h2>
+          <p>
+            The agent sees the customer profile, current issue, emotional state, past promises, resolutions already
+            offered, and solutions still available before the conversation continues.
+          </p>
+        </div>
+
+        <div class="assist-grid">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Customer lookup</span>
+                <h3>Email intake</h3>
+              </div>
+              <strong data-lookup-status>Ready</strong>
+            </div>
+            <label>
+              Customer email
+              <input data-email-input value="maya@example.com" />
+            </label>
+            <label>
+              Customer message
+              <textarea data-message-input>I already asked about this fee yesterday and I still do not have a real answer.</textarea>
+            </label>
+            <div class="actions">
+              <button data-detect>Detect customer and sentiment</button>
+              <button class="secondary" data-handoff>Prepare agent handoff</button>
+            </div>
+          </section>
+
+          <section class="card profile">
+            <div class="card-head">
+              <div>
+                <span>Customer profile</span>
+                <h3 data-customer-name></h3>
+              </div>
+              <strong data-customer-tier></strong>
+            </div>
+            <dl>
+              <div><dt>Customer number</dt><dd data-customer-number></dd></div>
+              <div><dt>Email</dt><dd data-customer-email></dd></div>
+              <div><dt>Preferred channel</dt><dd data-channel></dd></div>
+              <div><dt>Relationship value</dt><dd data-value></dd></div>
+              <div><dt>Consent</dt><dd data-consent></dd></div>
+              <div><dt>Memory</dt><dd data-memory></dd></div>
+            </dl>
+          </section>
+
+          <section class="card emotion">
+            <div class="card-head">
+              <div>
+                <span>AI emotion sensing</span>
+                <h3 data-emotion></h3>
+              </div>
+              <strong data-urgency></strong>
+            </div>
+            <p data-emotion-reason></p>
+            <div class="meter"><span data-meter></span></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Current issue</span>
+                <h3 data-current-issue></h3>
+              </div>
+            </div>
+            <p data-issue-summary></p>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Already offered</span>
+                <h3>Resolution history</h3>
+              </div>
+            </div>
+            <ul data-offered></ul>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Still available</span>
+                <h3>Next best options</h3>
+              </div>
+            </div>
+            <ul data-available></ul>
+          </section>
+
+          <section class="card handoff-card">
+            <div class="card-head">
+              <div>
+                <span>Chat or phone handoff</span>
+                <h3>Agent briefing</h3>
+              </div>
+              <strong data-handoff-type>Chat ready</strong>
+            </div>
+            <textarea data-handoff-note></textarea>
+          </section>
+
+          <section class="card reply-card">
+            <div class="card-head">
+              <div>
+                <span>Human-sounding AI reply</span>
+                <h3>Suggested response</h3>
+              </div>
+            </div>
+            <textarea data-reply></textarea>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="agent-profile">
+        <div class="hero-card">
+          <span>Agent profile</span>
+          <h2>Amitalux Intelligence shows who is helping the customer and how the agent is performing.</h2>
+          <p>
+            The profile combines role, workload, permissions, specialties, CSAT, average reply time, coaching guidance,
+            and current cases so managers can support the team without micromanaging.
+          </p>
+        </div>
+        <div class="profile-layout">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Team</span>
+                <h3>Select an agent</h3>
+              </div>
+            </div>
+            <div class="scenario-list" data-agent-list></div>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span data-agent-role></span>
+                <h3 data-agent-name></h3>
+              </div>
+              <strong class="status-pill" data-agent-status></strong>
+            </div>
+            <dl>
+              <div><dt>Active load</dt><dd data-agent-load></dd></div>
+              <div><dt>Availability</dt><dd data-agent-availability></dd></div>
+              <div><dt>Backup agent</dt><dd data-agent-backup-current></dd></div>
+              <div><dt>Permissions</dt><dd data-agent-permissions></dd></div>
+              <div><dt>Tone guidance</dt><dd data-agent-tone></dd></div>
+              <div><dt>AI coaching</dt><dd data-agent-coaching></dd></div>
+            </dl>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>OOO routing</span>
+                <h3>Agent availability switch</h3>
+              </div>
+              <strong data-ooo-status>Ready</strong>
+            </div>
+            <label>
+              Backup agent
+              <select data-agent-backup></select>
+            </label>
+            <label>
+              Scheduled return
+              <input data-agent-return value="2026-07-05T17:00:00Z" />
+            </label>
+            <div class="actions">
+              <button data-set-agent-ooo>Set out of office</button>
+              <button class="secondary" data-set-agent-active>Set active</button>
+            </div>
+            <p class="helper-text">New assigned tickets route to the backup agent while this person is out.</p>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Performance</span>
+                <h3>Agent report</h3>
+              </div>
+            </div>
+            <div class="use-case-grid">
+              <div><span>Handled</span><strong data-agent-handled></strong><p>Cases handled today</p></div>
+              <div><span>CSAT</span><strong data-agent-csat></strong><p>Customer satisfaction</p></div>
+              <div><span>Avg reply</span><strong data-agent-avg></strong><p>Average response time</p></div>
+            </div>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Specialties</span>
+                <h3>Best-fit work</h3>
+              </div>
+            </div>
+            <ul data-agent-specialties></ul>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="customer-profile">
+        <div class="hero-card">
+          <span>Customer profile</span>
+          <h2>Amitalux Intelligence gives the agent the full customer story before they respond.</h2>
+          <p>
+            This profile follows the selected live case and shows identity, consent, preferences, emotional risk,
+            purchase or CRM context, memory, open issue, previous resolutions, and next best options.
+          </p>
+        </div>
+        <div class="profile-layout">
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Identity</span>
+                <h3 data-profile-customer-name></h3>
+              </div>
+              <strong data-profile-customer-tier></strong>
+            </div>
+            <dl>
+              <div><dt>Customer number</dt><dd data-profile-customer-number></dd></div>
+              <div><dt>Email</dt><dd data-profile-customer-email></dd></div>
+              <div><dt>Preferred channel</dt><dd data-profile-customer-channel></dd></div>
+              <div><dt>Relationship value</dt><dd data-profile-customer-value></dd></div>
+              <div><dt>Consent</dt><dd data-profile-customer-consent></dd></div>
+            </dl>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Relationship memory</span>
+                <h3>How to help this customer</h3>
+              </div>
+            </div>
+            <p data-profile-customer-memory></p>
+            <dl>
+              <div><dt>Square</dt><dd data-profile-customer-square></dd></div>
+              <div><dt>CRM</dt><dd data-profile-customer-crm></dd></div>
+            </dl>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Current issue</span>
+                <h3 data-profile-customer-issue></h3>
+              </div>
+              <strong class="status-pill" data-profile-customer-risk></strong>
+            </div>
+            <p data-profile-customer-summary></p>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <span>Case intelligence</span>
+                <h3>What Amitalux Intelligence should know</h3>
+              </div>
+            </div>
+            <div class="use-case-grid">
+              <div><span>Already offered</span><strong data-profile-offered-count></strong><p>Prior attempts</p></div>
+              <div><span>Still available</span><strong data-profile-available-count></strong><p>Resolution options</p></div>
+              <div><span>Data health</span><strong data-profile-data-health></strong><p data-profile-data-detail></p></div>
+            </div>
+          </section>
+          <section class="card wide-card">
+            <div class="card-head">
+              <div>
+                <span>Resolution history</span>
+                <h3>Offered and available options</h3>
+              </div>
+            </div>
+            <div class="two-column-list">
+              <div><h3>Already offered</h3><ul data-profile-offered></ul></div>
+              <div><h3>Still available</h3><ul data-profile-available></ul></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" data-panel="customers">
+        <div class="hero-card">
+          <span>Built-in database</span>
+          <h2>Amitalux Intelligence can store customer information without Square or a CRM.</h2>
+          <p>Profiles include contact details, consent, notes, relationship value, preferences, history, and memory.</p>
+        </div>
+        <div class="customer-list" data-customer-list></div>
+      </section>
+
+      <section class="view" data-panel="memory">
+        <div class="hero-card">
+          <span>Adaptive memory</span>
+          <h2>Amitalux Intelligence learns how each customer prefers to be helped.</h2>
+          <p>It remembers channel preference, tone, frustration triggers, follow-up timing, and what resolved prior issues.</p>
+        </div>
+        <div class="card">
+          <ul data-memory-ledger></ul>
+        </div>
+      </section>
+
+      <section class="view" data-panel="data-health">
+        <div class="hero-card">
+          <span>Admin stale data alerts</span>
+          <h2>Amitalux Intelligence watches for customer records that no longer look trustworthy.</h2>
+          <p>
+            The system can alert admins when customer records have not been verified, conflict with Square or CRM data,
+            or contain unresolved notes that could lead to a poor customer experience.
+          </p>
+        </div>
+        <div class="integration-grid" data-stale-alerts></div>
+      </section>
+
+      <section class="view" data-panel="crm">
+        <div class="hero-card">
+          <span>CRM painpoints covered</span>
+          <h2>Amitalux Intelligence is designed to avoid the problems that make teams hate traditional CRMs.</h2>
+          <p>
+            The product should act like a system of intelligence, not a data-entry burden. The AI captures context,
+            keeps records clean, connects tools, and helps the user in the moment.
+          </p>
+        </div>
+        <div class="integration-grid">
+          <div class="card">
+            <h3>Manual data entry</h3>
+            <p>Covered. Amitalux Intelligence uses email lookup, conversation capture, AI summaries, handoff notes, and memory updates instead of asking reps to manually log everything.</p>
+          </div>
+          <div class="card">
+            <h3>Overwhelming complexity</h3>
+            <p>Covered. The prototype is organized around the work: identify customer, detect emotion, show history, show options, and hand off clearly.</p>
+          </div>
+          <div class="card">
+            <h3>Data rot</h3>
+            <p>Covered in the prototype with stale-record alerts. A production version should add duplicate detection, normalization, admin review queues, and merge tools.</p>
+          </div>
+          <div class="card">
+            <h3>Integration silos</h3>
+            <p>Covered conceptually. Amitalux Intelligence can work standalone or connect with Square, Salesforce, HubSpot, Zoho, Pipedrive, CSV import, OAuth, and API mapping.</p>
+          </div>
+          <div class="card">
+            <h3>Passive reporting</h3>
+            <p>Covered. Amitalux Intelligence actively prepares replies, agent handoffs, customer memory, available resolutions, and business context.</p>
+          </div>
+          <div class="card">
+            <h3>System of intelligence</h3>
+            <p>Covered as the core direction. Amitalux Intelligence senses emotion, remembers customer preferences, recommends next steps, and turns support into business action.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-panel="privacy">
+        <div class="hero-card">
+          <span>Privacy and encryption</span>
+          <h2>Customer memory is powerful, so it has to be protected.</h2>
+          <p>Amitalux Intelligence models redaction, access controls, retention, audit logs, and end to end encryption boundaries.</p>
+        </div>
+        <div class="card">
+          <ul>
+            <li>AI receives redacted context unless a human approves more access.</li>
+            <li>Customer memory can be cleared or limited by consent.</li>
+            <li>Conversation payloads are modeled as encrypted before storage.</li>
+            <li>Every handoff, lookup, and AI action is audit logged.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="view" data-panel="integrations">
+        <div class="hero-card">
+          <span>Connected context</span>
+          <h2>Amitalux Intelligence works standalone or with Square, Salesforce, and other CRMs.</h2>
+          <p>Integrations enrich the agent briefing with payment, booking, loyalty, case, account, and owner context.</p>
+        </div>
+        <div class="integration-grid">
+          <div class="card"><h3>Square</h3><p>Payments, orders, bookings, loyalty, invoices, gift cards.</p></div>
+          <div class="card"><h3>Salesforce</h3><p>Accounts, contacts, cases, opportunities, service history.</p></div>
+          <div class="card"><h3>Other CRMs</h3><p>HubSpot, Zoho, Pipedrive, CSV import, OAuth, API mapping.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

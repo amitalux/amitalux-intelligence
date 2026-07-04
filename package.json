@@ -1,0 +1,19 @@
+{
+  "name": "amitalux-intelligence-customer-care",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev",
+    "check": "node --check app.js && node --check netlify/functions/ai-draft.js && node --check netlify/functions/state.js && node --check netlify/functions/cases.js && node --check netlify/functions/customers.js && node --check netlify/functions/case-action.js && node --check netlify/functions/tasks.js && node --check netlify/functions/process-inbound-email.js && node --check netlify/functions/toggle-ooo.js && node --check netlify/functions/_shared/amitalux-store.js && node --check netlify/functions/_shared/sanitizer.js && node --check netlify/functions/_shared/env.js && node --check netlify/functions/_shared/supabase-db.js",
+    "deploy:draft": "netlify deploy --dir=.",
+    "deploy:prod": "netlify deploy --prod --dir=."
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.38.1"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^10.7.9",
+    "@supabase/supabase-js": "^2.110.0"
+  }
+}

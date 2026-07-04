@@ -1,0 +1,6 @@
+node_modules
+.netlify-home
+.npm-cache
+*.docx
+build_demo_testing_guide.py
+database

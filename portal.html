@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Center | North & Vale</title>
+    <link rel="stylesheet" href="retail-styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-container">
+        <div class="logo"><a href="retailer-demo.html">North & Vale<span>Home goods, apparel, and daily essentials</span></a></div>
+        <nav class="main-nav">
+          <a href="retailer-demo.html" class="nav-link">Shop</a>
+          <a href="account.html" class="nav-link">Account</a>
+          <a href="portal.html" class="nav-link active">Help</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="index.html" class="nav-link">Amitalux Intelligence</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel" style="text-align:center;">
+        <span>Knowledge portal</span>
+        <h1 class="page-title">How can we help?</h1>
+        <p>Search common answers before contacting support. If the answer does not solve it, we pass article context into your support message.</p>
+        <label style="max-width: 680px; margin: 18px auto 0; text-align: left;">
+          Search help articles
+          <input data-knowledge-search value="" placeholder="Try shipping, returns, damaged, label, wrong item" />
+        </label>
+      </section>
+
+      <section class="knowledge-layout" style="margin-top: 16px;">
+        <aside class="panel">
+          <span>Topics</span>
+          <h3>Browse by category</h3>
+          <div class="list">
+            <button class="filter-button active" data-knowledge-filter="all"><strong>All topics</strong><span>Show every article</span></button>
+            <button class="filter-button" data-knowledge-filter="shipping"><strong>Shipping</strong><span>Delivery timing and tracking</span></button>
+            <button class="filter-button" data-knowledge-filter="returns"><strong>Returns</strong><span>Labels, refunds, and exchanges</span></button>
+            <button class="filter-button" data-knowledge-filter="orders"><strong>Orders</strong><span>Wrong, missing, or damaged items</span></button>
+            <button class="filter-button" data-knowledge-filter="account"><strong>Account</strong><span>Payment, addresses, and updates</span></button>
+          </div>
+        </aside>
+
+        <section class="panel">
+          <div class="section-head">
+            <div><span>Self service</span><h2>Suggested answers</h2></div>
+            <strong class="status" data-knowledge-count>6 articles</strong>
+          </div>
+          <div class="list" data-article-list></div>
+        </section>
+
+        <section class="panel">
+          <span data-article-category>Shipping</span>
+          <h3 data-article-title>Track a delayed order</h3>
+          <p data-article-summary></p>
+          <ul class="article-steps" data-article-steps></ul>
+          <div class="portal-note">
+            <strong>When to contact us</strong>
+            <p data-article-escalation></p>
+          </div>
+          <div class="actions">
+            <button data-article-helpful>Article helped</button>
+            <a class="btn secondary" data-article-escalate href="contact.html">Still need help</a>
+          </div>
+        </section>
+
+        <section class="panel">
+          <span>Portal analytics</span>
+          <h3 data-knowledge-outcome>No article outcome yet</h3>
+          <p data-knowledge-detail>Use article outcomes to test whether Amitalux Intelligence sees self-service context before escalation.</p>
+          <div class="mini-log" data-knowledge-log>
+            <article><strong>Ready</strong><p>Knowledge views and escalations will appear here.</p></article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer>North & Vale help center for testing self-service and escalation.</footer>
+    <script src="retail-data.js"></script>
+    <script>
+      let activeKnowledgeFilter = "all";
+      let activeArticleId = "delayed-order";
+      let knowledgeEvents = [];
+
+      function articleMatches(article, query) {
+        const normalizedQuery = normalizeSearchTerm(query);
+        const text = normalizeSearchTerm(`${article.category} ${article.title} ${article.summary} ${article.keywords.join(" ")}`);
+        return text.includes(normalizedQuery);
+      }
+
+      function activeArticle() {
+        return knowledgeArticles.find((article) => article.id === activeArticleId) || knowledgeArticles[0];
+      }
+
+      function escalationUrl(article) {
+        return `contact.html?reason=order_status&message=${encodeURIComponent(article.message)}&article=${encodeURIComponent(article.title)}`;
+      }
+
+      function renderKnowledgePortal() {
+        const query = $("[data-knowledge-search]")?.value.trim() || "";
+        const articles = knowledgeArticles.filter((article) => {
+          const matchesFilter = activeKnowledgeFilter === "all" || article.category === activeKnowledgeFilter;
+          const matchesSearch = !query || articleMatches(article, query);
+          return matchesFilter && matchesSearch;
+        });
+        const displayArticles = articles.length ? articles : knowledgeArticles.slice(0, 4);
+        const current = displayArticles.find((article) => article.id === activeArticleId) || displayArticles[0] || knowledgeArticles[0];
+        activeArticleId = current.id;
+        document.querySelectorAll("[data-knowledge-filter]").forEach((button) => {
+          button.classList.toggle("active", button.dataset.knowledgeFilter === activeKnowledgeFilter);
+        });
+        $("[data-knowledge-count]").textContent = articles.length ? `${articles.length} article${articles.length === 1 ? "" : "s"}` : "Suggested";
+        $("[data-article-list]").innerHTML = `
+          ${articles.length ? "" : `<article class="portal-note"><strong>No exact match</strong><p>Showing the closest help articles so the portal still gives the customer somewhere useful to go.</p></article>`}
+          ${displayArticles.map((article) => `
+            <button class="article-button ${article.id === current.id ? "active" : ""}" data-article="${article.id}">
+              <strong>${article.title}</strong>
+              <span>${article.category}</span>
+              <p>${article.summary}</p>
+            </button>
+          `).join("")}
+        `;
+        $("[data-article-category]").textContent = current.category;
+        $("[data-article-title]").textContent = current.title;
+        $("[data-article-summary]").textContent = current.summary;
+        $("[data-article-steps]").innerHTML = current.steps.map((step) => `<li>${step}</li>`).join("");
+        $("[data-article-escalation]").textContent = current.escalation;
+        $("[data-article-escalate]").href = escalationUrl(current);
+      }
+
+      function logKnowledgeEvent(title, detail) {
+        knowledgeEvents.unshift({ title, detail });
+        $("[data-knowledge-log]").innerHTML = knowledgeEvents.slice(0, 4).map((event) => `<article><strong>${event.title}</strong><p>${event.detail}</p></article>`).join("");
+      }
+
+      document.addEventListener("click", (event) => {
+        const filterButton = event.target.closest("[data-knowledge-filter]");
+        if (filterButton) {
+          activeKnowledgeFilter = filterButton.dataset.knowledgeFilter;
+          renderKnowledgePortal();
+        }
+        const articleButton = event.target.closest("[data-article]");
+        if (articleButton) {
+          activeArticleId = articleButton.dataset.article;
+          renderKnowledgePortal();
+          logKnowledgeEvent("Article viewed", activeArticle().title);
+        }
+        if (event.target.matches("[data-article-helpful]")) {
+          const article = activeArticle();
+          $("[data-knowledge-outcome]").textContent = "Article marked helpful";
+          $("[data-knowledge-detail]").textContent = `${article.title} solved the customer question without creating a support ticket.`;
+          logKnowledgeEvent("Self-service success", `${article.title} was marked helpful.`);
+        }
+      });
+
+      $("[data-knowledge-search]")?.addEventListener("input", renderKnowledgePortal);
+      renderKnowledgePortal();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amitalux Intelligence Product Brief</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body style="display:block">
+    <main>
+      <section class="hero-card">
+        <span>Product brief</span>
+        <h1>Amitalux Intelligence</h1>
+        <p>
+          Amitalux Intelligence is an AI customer service agent and business assistant. When a customer gives their email address,
+          Amitalux Intelligence pulls up the full customer record, detects emotional state through typing, and prepares the agent with
+          the issue history, past resolutions, remaining options, and best response.
+        </p>
+        <p><a href="index.html">Open the prototype</a></p>
+      </section>
+
+      <section class="card">
+        <h2>What It Does</h2>
+        <ul>
+          <li>Identifies customers from an email address.</li>
+          <li>Includes customer profiles with consent, preferences, relationship value, memory, history, and available resolutions.</li>
+          <li>Includes agent profiles with workload, permissions, specialties, CSAT, response time, and AI coaching guidance.</li>
+          <li>Shows full customer profile, consent, channel preference, and relationship value.</li>
+          <li>Senses frustration or concern through customer typing.</li>
+          <li>Shows what resolutions were already offered.</li>
+          <li>Shows what solutions are still available.</li>
+          <li>Creates a chat or phone handoff note for a human agent.</li>
+          <li>Drafts a human-sounding response that does not feel automated.</li>
+          <li>Runs guided use cases that show the customer journey, queue impact, case progression, and business learning.</li>
+          <li>Shows reports for volume, queue health, CSAT, case progression, agent performance, and history.</li>
+          <li>Uses red, yellow, and green status indicators so admins can see what is healthy, at risk, or urgent.</li>
+          <li>Alerts admins when customer records look stale, conflicted, or unresolved.</li>
+          <li>Works standalone or with Square, Salesforce, and other CRM systems.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Functioning Browser Demo</h2>
+        <p>
+          The Live Workbench is interactive. A reviewer can select a customer case, run AI analysis, approve the reply,
+          send the response, close the case, and add a new incoming case. The queue, history, CSAT, case progression,
+          handled count, and reports update inside the browser as the work happens.
+        </p>
+        <p>
+          The current build now includes a Netlify backend. Customers, agents, cases, history, and live metrics are
+          stored through serverless API routes instead of living only in the browser.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Product Portals</h2>
+        <p>
+          Amitalux Intelligence now has three product surfaces: a Customer Portal for customer-facing chat and email, an Agent Portal
+          for handling those conversations, and an Admin Portal for queue health, reporting, agent performance, data
+          health, and audit history.
+        </p>
+        <p>
+          A message submitted from the Customer Portal enters the backend queue. The Agent Portal can analyze, approve,
+          send, and close it. The Admin Portal reflects the same work through live operational reporting.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Working Use Cases</h2>
+        <p>
+          The demo includes realistic flows for a frustrated billing customer, a missing gift note, and a stale CRM
+          conflict. Each flow shows how Amitalux Intelligence connects customer recognition, sentiment, queue health, AI response,
+          case progression, history, and business learning.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Reports And Operations</h2>
+        <p>
+          Amitalux Intelligence includes an operational dashboard for the business. Admins can see today’s customer care health,
+          incoming volume, queue pressure, channel mix, agent performance, CSAT, and case progression. The goal is to
+          show what changed, why it changed, and what needs attention next.
+        </p>
+        <p>
+          Red, yellow, and green indicators make the system easy to scan. Green means healthy. Yellow means the business
+          should watch it. Red means the issue needs action before it damages the customer experience.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Admin Data Health</h2>
+        <p>
+          Amitalux Intelligence can monitor customer records for stale or conflicting information. For example, if Square shows a
+          recent booking but Salesforce still marks the customer as a renewal candidate, Amitalux Intelligence can alert an admin
+          before the business sends the wrong message.
+        </p>
+        <p>
+          This matters because clean records protect both sides. Customers do not have to correct the company, and the
+          team does not make decisions from old or incomplete data.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Why It Is Different</h2>
+        <p>
+          Most customer service tools show tickets. Amitalux Intelligence shows the customer relationship. It helps the business avoid
+          making the customer repeat the story, and it gives the agent the emotional context needed to respond well.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>CRM Painpoints Covered</h2>
+        <ul>
+          <li>
+            Manual data entry: Amitalux Intelligence reduces logging by using email lookup, conversation capture, AI summaries,
+            handoff notes, and customer memory.
+          </li>
+          <li>
+            Overwhelming complexity: Amitalux Intelligence is organized around the support workflow rather than large admin-heavy CRM
+            screens.
+          </li>
+          <li>
+            Data rot: Amitalux Intelligence centralizes customer identity, consent, memory, and history. The prototype now includes
+            stale-record alerts. A production version should add duplicate detection, formatting normalization, admin
+            review queues, and merge tools.
+          </li>
+          <li>
+            Integration silos: Amitalux Intelligence can work standalone or connect to Square, Salesforce, HubSpot, Zoho, Pipedrive,
+            CSV import, OAuth, and API mapping.
+          </li>
+          <li>
+            Passive reporting: Amitalux Intelligence actively prepares responses, agent handoffs, next best options, and business
+            context instead of only reporting what happened.
+          </li>
+          <li>
+            System of intelligence: Amitalux Intelligence senses emotion, remembers customer preferences, recommends next steps, and
+            turns support patterns into business action.
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

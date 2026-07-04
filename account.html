@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account | North & Vale</title>
+    <link rel="stylesheet" href="retail-styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-container">
+        <div class="logo"><a href="retailer-demo.html">North & Vale<span>Home goods, apparel, and daily essentials</span></a></div>
+        <nav class="main-nav">
+          <a href="retailer-demo.html" class="nav-link">Shop</a>
+          <a href="account.html" class="nav-link active">Account</a>
+          <a href="portal.html" class="nav-link">Help</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="index.html" class="nav-link">Amitalux Intelligence</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Customer account</span>
+          <h1 class="page-title">Your orders</h1>
+        </div>
+        <strong class="status" data-order-count>4 orders</strong>
+      </div>
+
+      <section class="account-layout">
+        <aside class="panel">
+          <span>Profile</span>
+          <h3>Taylor Morgan</h3>
+          <p>taylor@example.com</p>
+          <div class="list">
+            <div class="account-tile"><span>Open orders</span><strong data-account-open>2</strong></div>
+            <div class="account-tile"><span>Returns</span><strong data-account-returns>1 active</strong></div>
+            <div class="account-tile"><span>Rewards</span><strong>Vale Silver</strong></div>
+          </div>
+          <div class="actions"><a class="btn secondary" href="contact.html?reason=account">Get account help</a></div>
+        </aside>
+
+        <section class="panel">
+          <span>Order history</span>
+          <h3>All orders</h3>
+          <div class="list" data-account-orders></div>
+        </section>
+
+        <section class="panel">
+          <span data-account-order-status>In transit</span>
+          <h3 data-account-order-title>NV-1049</h3>
+          <p data-account-order-summary></p>
+          <div class="detail-grid">
+            <div class="detail-tile"><span>Placed</span><strong data-account-order-date></strong></div>
+            <div class="detail-tile"><span>Total</span><strong data-account-order-total></strong></div>
+            <div class="detail-tile"><span>Delivery</span><strong data-account-order-delivery></strong></div>
+          </div>
+          <div class="mini-log" data-account-order-timeline></div>
+        </section>
+
+        <section class="panel">
+          <span>Items</span>
+          <h3>Order contents</h3>
+          <div class="list" data-account-order-items></div>
+          <div class="actions">
+            <a class="btn" data-help-with-order href="contact.html">Get help with this order</a>
+            <a class="btn secondary" data-return-order href="contact.html">Start return</a>
+            <button class="secondary" data-reorder>Buy again</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer>North & Vale account center for testing order-aware support.</footer>
+    <script src="retail-data.js"></script>
+    <script>
+      let activeOrderId = new URLSearchParams(location.search).get("order") || "NV-1049";
+
+      function activeOrder() {
+        return customerOrders.find((order) => order.id === activeOrderId) || customerOrders[0];
+      }
+
+      function contactUrl(order, mode = "help") {
+        const message = mode === "return"
+          ? `I want to start or check a return for order ${order.id}. Please confirm the return steps and label status.`
+          : order.issueMessage;
+        return `contact.html?order=${encodeURIComponent(order.id)}&message=${encodeURIComponent(message)}&reason=${mode === "return" ? "returns_exchanges" : "order_status"}`;
+      }
+
+      function renderAccount() {
+        const order = activeOrder();
+        const openCount = customerOrders.filter((item) => ["In transit", "Action needed"].includes(item.status)).length;
+        const returnCount = customerOrders.filter((item) => item.status.includes("Return")).length;
+        $("[data-account-open]").textContent = openCount;
+        $("[data-account-returns]").textContent = returnCount ? `${returnCount} active` : "None";
+        $("[data-order-count]").textContent = `${customerOrders.length} orders`;
+        $("[data-account-orders]").innerHTML = customerOrders.map((item) => `
+          <button class="selectable-row ${item.id === order.id ? "active" : ""}" data-account-order="${item.id}">
+            <strong>${item.id} · ${item.status}</strong>
+            <span>${item.total} · ${item.delivery}</span>
+            <p>${item.summary}</p>
+          </button>
+        `).join("");
+        $("[data-account-order-status]").textContent = order.status;
+        $("[data-account-order-title]").textContent = `${order.id} · ${order.status}`;
+        $("[data-account-order-summary]").textContent = order.summary;
+        $("[data-account-order-date]").textContent = order.date;
+        $("[data-account-order-total]").textContent = order.total;
+        $("[data-account-order-delivery]").textContent = order.delivery;
+        $("[data-account-order-timeline]").innerHTML = order.timeline.map((step) => {
+          const [label, detail] = step.split(": ");
+          return `<article><strong>${label}</strong><p>${detail}</p></article>`;
+        }).join("");
+        $("[data-account-order-items]").innerHTML = order.items.map((item) => `
+          <article class="order-item">
+            <img class="item-thumb" src="${item.image}" alt="" />
+            <div><strong>${item.name}</strong><p>${item.detail}</p></div>
+          </article>
+        `).join("");
+        $("[data-help-with-order]").href = contactUrl(order, "help");
+        $("[data-return-order]").href = contactUrl(order, "return");
+      }
+
+      document.addEventListener("click", (event) => {
+        const orderButton = event.target.closest("[data-account-order]");
+        if (orderButton) {
+          activeOrderId = orderButton.dataset.accountOrder;
+          renderAccount();
+        }
+        if (event.target.matches("[data-reorder]")) {
+          event.target.textContent = "Added to cart";
+        }
+      });
+
+      renderAccount();
+    </script>
+  </body>
+</html>
