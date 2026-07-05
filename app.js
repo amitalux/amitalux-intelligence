@@ -509,7 +509,7 @@ document.body.addEventListener('click', function(e) {
           contextualBody = `I received your note about the "${tk.subject.toLowerCase()}" and wanted to reach out right away. I know how disruptive this can be to your day.\n\nI'm digging into our active account logs right now to see exactly what happened here so we can get it completely squared away for you.`;
         }
 
-        txtArea.value = `Hi \${firstName},\n\n\${contextualBody}\n\nI'll send another update over to you as soon as I have a concrete solution, but please let me know if any other details pop up in the meantime.\n\nBest,\n\${tk.assignee || "John Smith"}`;
+        txtArea.value = `Hi ${firstName},\n\n${contextualBody}\n\nI'll send another update over to you as soon as I have a concrete solution, but please let me know if any other details pop up in the meantime.\n\nBest,\n${tk.assignee || "John Smith"}`;
       }
     }, 950);
     return;
