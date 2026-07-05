@@ -311,11 +311,11 @@ function render() {
               // Apply domain traffic segregation logic filters
               let filteredList = [...paginatedCases];
               if (backendState.currentConsole === 'Agent') {
-                // Strip out pipeline items from the client care support workspace tracks completely
+                // Only pull out structural CRM/Pipeline operational friction items
                 filteredList = filteredList.filter(t => !t.subject.toLowerCase().includes('crm') && !t.customer.includes('jordan'));
               } else if (backendState.currentConsole === 'Sales') {
-                // Isolate sales pipeline traffic specifically to this dashboard environment
-                filteredList = backendState.cases.filter(t => t.subject.toLowerCase().includes('crm') || t.customer.includes('jordan') || t.customer.includes('maya'));
+                // Strictly pull items related to CRM operations or technical pipeline roadblocks
+                filteredList = backendState.cases.filter(t => t.subject.toLowerCase().includes('crm') || t.customer.includes('jordan'));
               }
               
               if (filteredList.length === 0) {
@@ -363,7 +363,86 @@ function render() {
           <button id="submitOffboardUserBtn" style="height:36px; background:#dc2626; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer; margin-top:8px;">Deprovision User Session</button>
         </div>
       `;
-    } else if (backendState.currentTab === "Sales Pipeline") {
+    } else if (backendState.currentTab === "Tasks" && backendState.currentConsole === "Sales") {
+    // Isolate or fall back to high-priority sales context action checklist items
+    const salesTasks = backendState.tasks && backendState.tasks.length > 0 
+      ? backendState.tasks 
+      : [
+          { id: "TSK-901", title: "Review Jordan's Square integration payload payload conflict logs", due: "Today", focus: "B2B Deal Friction" },
+          { id: "TSK-902", title: "Run background clear verification check on Widgets Express company account profile", due: "Tomorrow", focus: "Firmographics Crawler" },
+          { id: "TSK-903", title: "Draft custom corporate premium license proposal structure", due: "July 8", focus: "Contract Milestone" }
+        ];
+
+    operationalActionFormHtml = `
+      <div style="font-family: sans-serif; display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 8px;">
+          <h3 style="margin: 0; font-size: 15px; color: #0f172a;">📝 Sales Pipeline Next Action Milestones</h3>
+          <span style="font-size: 11px; color: #64748b;">Target milestones to move active opportunities through the discovery phase</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          ${salesTasks.map(tsk => `
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 14px 16px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+              <div>
+                <span style="font-size: 10px; font-weight: 700; background: #eff6ff; color: #2563eb; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">${tsk.focus || 'Pipeline'}</span>
+                <h4 style="margin: 6px 0 2px 0; font-size: 14px; color: #0f172a; font-weight: 600;">${tsk.title}</h4>
+                <code style="font-size: 11px; color: #64748b;">ID: ${tsk.id}</code>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-size: 12px; font-weight: 600; color: #e11d48; background: #fff1f2; padding: 4px 8px; border-radius: 6px;">⏰ Due: ${tsk.due}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  } else if (backendState.currentTab === "Pipeline Tickets") {
+    // Isolate sales pipeline traffic specifically to this dashboard view track
+    const salesTickets = backendState.cases.filter(t => t.subject.toLowerCase().includes('crm') || t.customer.includes('jordan'));
+
+    operationalActionFormHtml = `
+      <div style="font-family: sans-serif; display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h3 style="margin: 0; font-size: 15px; color: #0f172a;">🎯 High Priority Sales Pipeline Queues</h3>
+            <span style="font-size: 11px; color: #64748b;">Isolating incoming B2B system deals and integration requests</span>
+          </div>
+          <span style="background: #fee2e2; color: #991b1b; font-weight: 700; font-size: 11px; padding: 4px 10px; border-radius: 20px;">
+            ${salesTickets.length} Deals Pending Action
+          </span>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+            <thead>
+              <tr style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: 600;">
+                <th style="padding: 12px 16px; width: 90px;">Deal ID</th>
+                <th style="padding: 12px 16px;">Core Discovery Inquiry / Subject</th>
+                <th style="padding: 12px 16px;">Inbound Prospect Domain</th>
+                <th style="padding: 12px 16px; width: 12px;">Urgency</th>
+                <th style="padding: 12px 16px;">Sales Assignee</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${salesTickets.map(t => `
+                <tr data-open-ticket-id="${t.id}" style="border-bottom: 1px solid #f1f5f9; cursor: pointer; hover: background: #fafafa;">
+                  <td style="padding: 14px 16px; font-weight: 700; color: #2563eb;">#${t.id}</td>
+                  <td style="padding: 14px 16px; font-weight: 600; color: #0f172a;">${t.subject}</td>
+                  <td style="padding: 14px 16px; color: #334155;">${t.customer}</td>
+                  <td style="padding: 14px 16px;">
+                    <span style="background: ${t.priority === 'Critical' ? '#fee2e2' : '#fef3c7'}; color: ${t.priority === 'Critical' ? '#991b1b' : '#92400e'}; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">
+                      ${t.priority}
+                    </span>
+                  </td>
+                  <td style="padding: 14px 16px; color: #475569;">${t.assignee || 'Unassigned'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  } else if (backendState.currentTab === "Sales Pipeline") {
     operationalActionFormHtml = `
       <div style="font-family: sans-serif; display: flex; flex-direction: column; gap: 20px;">
         <!-- Upper Analytical Dashboard Overview Block -->
