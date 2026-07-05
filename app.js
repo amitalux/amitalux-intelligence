@@ -14,7 +14,7 @@ const backendState = {
 
 const consoleMenus = {
   Admin: ["Dashboard", "User Onboarding", "User Offboarding", "Integrations", "Automation Rules", "Compliance Purge", "Tasks", "Permissions", "Settings"],
-  Agent: ["Dashboard", "Tickets", "Create Contact", "Escalate Ticket", "Tasks"],
+  Agent: ["Dashboard", "Tickets", "Sales Pipeline", "Create Contact", "Escalate Ticket", "Tasks"],
   Supervisor: ["Dashboard", "Live Queue", "Resolve Escalation", "QA Evaluation", "Agent Performance", "Tasks", "Permissions"]
 };
 
@@ -347,7 +347,103 @@ function render() {
           <button id="submitOffboardUserBtn" style="height:36px; background:#dc2626; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer; margin-top:8px;">Deprovision User Session</button>
         </div>
       `;
-    } else if (backendState.currentTab === "Create Contact") {
+    } else if (backendState.currentTab === "Sales Pipeline") {
+    operationalActionFormHtml = `
+      <div style="font-family: sans-serif; display: flex; flex-direction: column; gap: 20px;">
+        <!-- Upper Analytical Dashboard Overview Block -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">Active Pipeline Value</div>
+            <div style="font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 4px;">$645,000</div>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">Total Pipeline Leads</div>
+            <div style="font-size: 22px; font-weight: 800; color: #2563eb; margin-top: 4px;">18 Accounts</div>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">Avg. Conv. Propensity</div>
+            <div style="font-size: 22px; font-weight: 800; color: #10b981; margin-top: 4px;">76.4%</div>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">Sync Integrations Status</div>
+            <div style="font-size: 13px; font-weight: 700; color: #475569; margin-top: 10px; display: flex; align-items: center; gap: 4px;">
+              <span style="width: 8px; height: 8px; background: #10b981; border-radius: 999px;"></span> Amitalux Native CRM
+            </div>
+          </div>
+        </div>
+
+        <!-- CRM Interactive Hub Control Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 8px;">
+          <h3 style="margin: 0; font-size: 16px; color: #0f172a;">💼 Inbound Pipeline Opportunities</h3>
+          <button type="button" style="background: #2563eb; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;">+ Provision New Lead</button>
+        </div>
+
+        <!-- Master Pipeline Lead Registry Data Grid Matrix -->
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+            <thead>
+              <tr style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: 600;">
+                <th style="padding: 12px 16px;">Lead Profile / ID</th>
+                <th style="padding: 12px 16px;">Stage / Intent</th>
+                <th style="padding: 12px 16px;">Firmographics Matrix</th>
+                <th style="padding: 12px 16px;">Primary Stakeholder / Contacts</th>
+                <th style="padding: 12px 16px;">Next Strategic Step</th>
+                <th style="padding: 12px 16px; text-align: right;">AI Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1: Widgets Express -->
+              <tr style="border-bottom: 1px solid #f1f5f9; hover: background: #fafafa;">
+                <td style="padding: 14px 16px;">
+                  <strong style="color: #0f172a; display: block;">Widgets Express</strong>
+                  <code style="font-size: 11px; color: #64748b;">LEAD1000</code>
+                </td>
+                <td style="padding: 14px 16px;">
+                  <span style="background: #eff6ff; color: #2563eb; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Discovery</span>
+                  <div style="font-size: 11px; color: #64748b; margin-top: 4px;">High Buying Intent</div>
+                </td>
+                <td style="padding: 14px 16px; color: #334155; font-size: 12px; line-height: 1.4;">
+                  <div>Size: 145 Employees</div>
+                  <div>Rev: $40M Mid-Market</div>
+                </td>
+                <td style="padding: 14px 16px;">
+                  <span style="color: #0f172a; font-weight: 500; display: block;">Marie Curie <code style="font-size:10px; color:#64748b;">(REPL1001)</code></span>
+                  <span style="font-size: 11px; color: #64748b;">marie@widgetsexpress.com</span>
+                </td>
+                <td style="padding: 14px 16px; color: #475569; max-width: 200px;">
+                  Coordinate interactive engineering workflow architectural demo.
+                </td>
+                <td style="padding: 14px 16px; text-align: right; font-weight: 700; color: #10b981;">84%</td>
+              </tr>
+
+              <!-- Row 2: Maya Inbound Inferred Pipeline Profile Entry -->
+              <tr style="border-bottom: 1px solid #f1f5f9;">
+                <td style="padding: 14px 16px;">
+                  <strong style="color: #0f172a; display: block;">Inferred Pipeline Entry</strong>
+                  <code style="font-size: 11px; color: #64748b;">LEAD1004</code>
+                </td>
+                <td style="padding: 14px 16px;">
+                  <span style="background: #fef3c7; color: #d97706; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Awaiting Sync</span>
+                  <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Late Fee Inquiry</div>
+                </td>
+                <td style="padding: 14px 16px; color: #64748b; font-size: 12px; font-style: italic;">
+                  AI Data enrichment crawler evaluating...
+                </td>
+                <td style="padding: 14px 16px;">
+                  <span style="color: #0f172a; font-weight: 500; display: block;">Maya <code style="font-size:10px; color:#64748b;">(REPL1005)</code></span>
+                  <span style="font-size: 11px; color: #64748b;">maya@example.com</span>
+                </td>
+                <td style="padding: 14px 16px; color: #475569; max-width: 200px;">
+                  Verify billing constraint exceptions before retention score drops.
+                </td>
+                <td style="padding: 14px 16px; text-align: right; font-weight: 700; color: #3b82f6;">78%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  } else if (backendState.currentTab === "Create Contact") {
       const uniqueCompanies = [...new Set(backendState.cases.map(c => c.customer))];
       operationalActionFormHtml = `
         <h3 style="margin-top:0; font-size:1rem; margin-bottom:16px; color:#334155; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">👤 Rich Contact Profile Directory Builder</h3>
