@@ -14,7 +14,8 @@ const backendState = {
 
 const consoleMenus = {
   Admin: ["Dashboard", "User Onboarding", "User Offboarding", "Integrations", "Automation Rules", "Compliance Purge", "Tasks", "Permissions", "Settings"],
-  Agent: ["Dashboard", "Tickets", "Sales Pipeline", "Create Contact", "Escalate Ticket", "Tasks"],
+  Agent: ["Dashboard", "Tickets", "Create Contact", "Escalate Ticket", "Tasks"],
+  Sales: ["Dashboard", "Pipeline Tickets", "Sales Pipeline", "Tasks"],
   Supervisor: ["Dashboard", "Live Queue", "Resolve Escalation", "QA Evaluation", "Agent Performance", "Tasks", "Permissions"]
 };
 
@@ -94,6 +95,7 @@ function render() {
           <span style="font-size:0.68rem; font-weight:800; text-transform:uppercase; color:#475569; letter-spacing:0.05em; display:block; margin-bottom:8px; padding-left:8px;">Active Console Scope</span>
           <select id="consoleScopeSelector" style="width:100%; height:36px; background:#1e293b; border:1px solid #334155; border-radius:6px; color:white; padding:0 8px; font-weight:600; font-size:0.85rem; cursor:pointer;">
             <option value="Agent" ${backendState.currentConsole==='Agent'?'selected':''}>🎧 Agent Workspace</option>
+            <option value="Sales" ${backendState.currentConsole==='Sales'?'selected':''}>💼 Sales Console</option>
             <option value="Admin" ${backendState.currentConsole==='Admin'?'selected':''}>⚙️ Admin Configuration</option>
             <option value="Supervisor" ${backendState.currentConsole==='Supervisor'?'selected':''}>📊 Supervisor Terminal</option>
           </select>
@@ -305,17 +307,31 @@ function render() {
             </tr>
           </thead>
           <tbody>
-            ${paginatedCases.length === 0 ? `
-              <tr><td colspan="5" style="padding:32px; text-align:center; color:#94a3b8; font-weight:500;">No records match your filters.</td></tr>
-            ` : paginatedCases.map(t => `
-              <tr data-open-ticket-id="${t.id}" style="border-bottom:1px solid #f1f5f9; cursor:pointer; background:${t.status==='Closed'?'#fafafa':''};">
-                <td style="padding:14px 16px; font-weight:700; color:#2563eb;">#${t.id}</td>
-                <td style="padding:14px 16px; font-weight:600; color:${t.status==='Closed'?'#64748b':''}">${t.subject}</td>
-                <td style="padding:14px 16px;">${t.customer}</td>
-                <td style="padding:14px 16px;"><span style="background:${t.status==='Closed'?'#e2e8f0':t.priority==='Critical'?'#fee2e2':'#fef3c7'}; color:${t.status==='Closed'?'#475569':t.priority==='Critical'?'#991b1b':'#92400e'}; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;">● ${t.status==='Closed'?'Closed':t.priority}</span></td>
-                <td style="padding:14px 16px;">${t.assignee}</td>
-              </tr>
-            `).join('')}
+            ${(() => {
+              // Apply domain traffic segregation logic filters
+              let filteredList = [...paginatedCases];
+              if (backendState.currentConsole === 'Agent') {
+                // Strip out pipeline items from the client care support workspace tracks completely
+                filteredList = filteredList.filter(t => !t.subject.toLowerCase().includes('crm') && !t.customer.includes('jordan'));
+              } else if (backendState.currentConsole === 'Sales') {
+                // Isolate sales pipeline traffic specifically to this dashboard environment
+                filteredList = backendState.cases.filter(t => t.subject.toLowerCase().includes('crm') || t.customer.includes('jordan') || t.customer.includes('maya'));
+              }
+              
+              if (filteredList.length === 0) {
+                return `<tr><td colspan="5" style="padding:32px; text-align:center; color:#94a3b8; font-weight:500;">No records match your filters.</td></tr>`;
+              }
+              
+              return filteredList.map(t => `
+                <tr data-open-ticket-id="${t.id}" style="border-bottom:1px solid #f1f5f9; cursor:pointer; background:${t.status==='Closed'?'#fafafa':''};">
+                  <td style="padding:14px 16px; font-weight:700; color:#2563eb;">#${t.id}</td>
+                  <td style="padding:14px 16px; font-weight:600; color:${t.status==='Closed'?'#64748b':''}">${t.subject}</td>
+                  <td style="padding:14px 16px;">${t.customer}</td>
+                  <td style="padding:14px 16px;"><span style="background:${t.status==='Closed'?'#e2e8f0':t.priority==='Critical'?'#fee2e2':'#fef3c7'}; color:${t.status==='Closed'?'#475569':t.priority==='Critical'?'#991b1b':'#92400e'}; padding:4px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;">● ${t.status==='Closed'?'Closed':t.priority}</span></td>
+                  <td style="padding:14px 16px;">${t.assignee}</td>
+                </tr>
+              `).join('');
+            })()}
           </tbody>
         </table>
         ${paginationControlsHtml}
@@ -879,6 +895,7 @@ document.body.addEventListener('change', function(e) {
     backendState.currentConsole = e.target.value;
     if (backendState.currentConsole === 'Admin') backendState.currentTab = 'Dashboard';
     if (backendState.currentConsole === 'Agent') backendState.currentTab = 'Tickets';
+    if (backendState.currentConsole === 'Sales') backendState.currentTab = 'Pipeline Tickets';
     if (backendState.currentConsole === 'Supervisor') backendState.currentTab = 'Live Queue';
     backendState.selectedTicket = null;
     render();
