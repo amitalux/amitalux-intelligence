@@ -124,6 +124,12 @@ function render() {
   `;
 
   let workspaceBodyHtml = "";
+  // Automatically fix misaligned console/tab states on execution
+  const currentConsoleTabs = consoleMenus[backendState.currentConsole] || [];
+  if (!currentConsoleTabs.includes(backendState.currentTab) && currentConsoleTabs.length > 0) {
+    backendState.currentTab = currentConsoleTabs[0];
+  }
+
   if (backendState.currentTab === "Dashboard") {
     if (backendState.currentConsole === "Agent") {
       const openCount = backendState.cases.filter(c => c.assignee === "John Smith" && c.status === "Open").length;
@@ -656,6 +662,8 @@ function render() {
                 </td>
                 <td style="padding: 14px 16px; text-align: right; font-weight: 700; color: #3b82f6;">78%</td>
               </tr>
+            </tbody>
+          </table>
             </tbody>
           </table>
         </div>
