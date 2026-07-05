@@ -2,7 +2,9 @@ import { initialState, readState, requireRole, writeState } from "./_shared/amit
 
 export default async (req) => {
   if (req.method === "GET") {
-    return Response.json(await readState(req));
+    const result = await readState(req);
+    console.log(JSON.stringify(result, null, 2));
+    return Response.json(result);
   }
 
   if (req.method === "POST") {
