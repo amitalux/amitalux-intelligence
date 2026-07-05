@@ -440,7 +440,8 @@ function render() {
             </div>
             <div style="border-top:1px solid #e2e8f0; padding-top:16px;">
               <textarea id="liveReplyInputTextArea" style="width:100%; height:80px; border:1px solid #cbd5e1; border-radius:8px; padding:12px; font-size:0.88rem;" placeholder="Compose automated client memory response..."></textarea>
-              <button id="triggerAIOperationalDraftBtn" style="margin-top:10px; height:36px; padding:0 14px; background:#eff6ff; color:#2563eb; border:none; border-radius:6px; font-weight:700; cursor:pointer;">🤖 Draft with Customer Memory</button>
+              <button id="triggerAIOperationalDraftBtn" style="margin-top:10px; margin-right:8px; height:36px; padding:0 14px; background:#eff6ff; color:#2563eb; border:none; border-radius:6px; font-weight:700; cursor:pointer;">🤖 Draft with Customer Memory</button>
+              <button id="approveAndSendReplyBtn" style="margin-top:10px; height:36px; padding:0 14px; background:#10b981; color:#ffffff; border:none; border-radius:6px; font-weight:700; cursor:pointer;">✉️ Approve & Send Response</button>
             </div>
           </div>
         </div>
@@ -479,13 +480,52 @@ document.body.addEventListener('click', function(e) {
     render();
     return;
   }
-  const dismissBtn = e.target.closest('#closeModalOverlayBtn');
+    const dismissBtn = e.target.closest('#closeModalOverlayBtn');
   if (dismissBtn) {
     backendState.selectedTicket = null;
     render();
     return;
   }
   
+  aiDraftBtn = e.target.closest('#triggerAIOperationalDraftBtn');
+  if (aiDraftBtn && backendState.selectedTicket) {
+    e.preventDefault();
+    const tk = backendState.selectedTicket;
+    const txtArea = document.getElementById("liveReplyInputTextArea");
+    if(txtArea) txtArea.value = "Analyzing context metrics and personalizing draft response...";
+    
+    setTimeout(() => {
+      if(txtArea) {
+        let rawName = tk.customer || "there";
+        let firstName = rawName.split('@')[0].split('.')[0];
+        firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+        
+        const subjectLower = tk.subject.toLowerCase();
+        let contextualBody = "";
+        
+        if (subjectLower.includes("fee") || subjectLower.includes("charge") || subjectLower.includes("billing")) {
+          contextualBody = `I took a look at your account notes regarding the ${tk.subject.toLowerCase()}. I completely understand wanting to get this sorted out quickly, especially after adjusting your schedule.\n\nI've gone ahead and opened up your profile details here, and I'm personally reviewing the waiver criteria to see how we can waive or credit this back for you.`;
+        } else {
+          contextualBody = `I received your note about the "${tk.subject.toLowerCase()}" and wanted to reach out right away. I know how disruptive this can be to your day.\n\nI'm digging into our active account logs right now to see exactly what happened here so we can get it completely squared away for you.`;
+        }
+
+        txtArea.value = `Hi \${firstName},\n\n\${contextualBody}\n\nI'll send another update over to you as soon as I have a concrete solution, but please let me know if any other details pop up in the meantime.\n\nBest,\n\${tk.assignee || "John Smith"}`;
+      }
+    }, 950);
+    return;
+  }
+
+  // 3.5 Approve & Send Resolution Workflow Handler
+  approveSendBtn = e.target.closest('#approveAndSendReplyBtn');
+  if (approveSendBtn && backendState.selectedTicket) {
+    e.preventDefault();
+    const tk = backendState.selectedTicket;
+    tk.priority = "Closed";
+    backendState.selectedTicket = null;
+    render();
+    return;
+  }
+
   const prevBtn = e.target.closest('#prevPageBtn');
   if (prevBtn && backendState.currentPage > 1) {
     backendState.currentPage--;
@@ -582,19 +622,100 @@ document.body.addEventListener('click', function(e) {
       created: "Jul 4, 2026"
     });
     
-    alert(`⚡ [Zero-Touch Capture Engine Active]\n\nAn inbound email was received from ${dispatchers[randomIdx]}.\n• Assigned Numeric ID: #${targetId}\n• Automated Routing Target: John Smith\n• Dynamic SLA Weight: ${isUrgent ? 'Critical' : 'High'}\n\nClick OK to watch the metrics data charts rebuild automatically.`);
     render();
+    
+    // Create a high-fidelity, production-grade custom toast element dynamically
+    const toast = document.createElement('div');
+    toast.style.position = 'fixed';
+    toast.style.bottom = '24px';
+    toast.style.right = '24px';
+    toast.style.background = '#0f172a';
+    toast.style.color = '#ffffff';
+    toast.style.padding = '16px 20px';
+    toast.style.borderRadius = '12px';
+    toast.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)';
+    toast.style.zIndex = '99999';
+    toast.style.display = 'flex';
+    toast.style.flexDirection = 'column';
+    toast.style.gap = '6px';
+    toast.style.maxWidth = '360px';
+    toast.style.border = '1px solid #334155';
+    toast.style.animation = 'slideInToast 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+    
+    toast.innerHTML = `
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="color:#3b82f6; font-size:1.1rem;">📥</span>
+        <strong style="font-size:0.85rem; font-weight:600; color:#f8fafc;">Zero-Touch Capture Active</strong>
+      </div>
+      <p style="margin:0; font-size:0.78rem; color:#94a3b8; line-height:1.4;">
+        Inbound communication intercepted from <span style="color:#cbd5e1; font-weight:500;">${dispatchers[randomIdx]}</span>. 
+        Mapped automatically to numerical profile token <strong style="color:#3b82f6;">#${targetId}</strong> and routed to your queue.
+      </p>
+    `;
+    
+    // Inject the inline keyframe animation schema rules directly if missing
+    if (!document.getElementById('toast-animation-style')) {
+      const style = document.createElement('style');
+      style.id = 'toast-animation-style';
+      style.innerHTML = `@keyframes slideInToast { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }`;
+      document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.transition = 'opacity 0.5s ease';
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 500);
+    }, 6000);
     return;
   }
 
-  const aiDraftBtn = e.target.closest('#triggerAIOperationalDraftBtn');
+  aiDraftBtn = e.target.closest('#triggerAIOperationalDraftBtn');
+    // Reassign the already declared variable to our actual button ID
+  aiDraftBtn = e.target.closest('#triggerAIOperationalDraftBtn');
+  const tk = backendState.selectedTicket;
   if (aiDraftBtn && backendState.selectedTicket) {
     e.preventDefault();
     const txtArea = document.getElementById("liveReplyInputTextArea");
     if(txtArea) txtArea.value = "Generating automated response profile script text...";
     setTimeout(() => {
-      if(txtArea) txtArea.value = "Dear Client,\n\nWe appreciate your communication history. Our operational AI agent layer has cross-referenced your profile memory logs and cleared the transaction drift conflict event successfully.\n\nWarm regards,\nAmitalux AI Support Assistant";
-    }, 1000);
+      if(txtArea) {
+        // Extract a first name from email or string (e.g., "maya@example.com" -> "Maya")
+        let rawName = tk.customer || "there";
+        let firstName = rawName.split('@')[0].split('.')[0];
+        firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+        
+        // Formulate a completely natural, humanized response based on the subject matter
+        const subjectLower = tk.subject.toLowerCase();
+        let contextualBody = "";
+        
+        if (subjectLower.includes("fee") || subjectLower.includes("charge") || subjectLower.includes("billing")) {
+          contextualBody = `I took a look at your account notes regarding the ${tk.subject.toLowerCase()}. I completely understand wanting to get this sorted out quickly, especially after adjusting your schedule.\n\nI've gone ahead and opened up your profile details here, and I'm personally reviewing the waiver criteria to see how we can waive or credit this back for you.`;
+        } else {
+          contextualBody = `I received your note about the "${tk.subject.toLowerCase()}" and wanted to reach out right away. I know how disruptive this can be to your day.\n\nI'm digging into our active account logs right now to see exactly what happened here so we can get it completely squared away for you.`;
+        }
+
+        txtArea.value = `Hi ${firstName},
+
+${contextualBody}
+
+I'll send another update over to you as soon as I have a concrete solution, but please let me know if any other details pop up in the meantime.
+
+Best,
+${tk.assignee || "John Smith"}`;
+      }
+    }, 950);
+    return;
+  }
+
+  // 3.5 Approve & Send Resolution Workflow Handler
+  approveSendBtn = e.target.closest('#approveAndSendReplyBtn');
+  if (approveSendBtn && backendState.selectedTicket) {
+    e.preventDefault();
+    const tk = backendState.selectedTicket;
+    tk.priority = "Closed";
+    backendState.selectedTicket = null;
+    render();
     return;
   }
 });
