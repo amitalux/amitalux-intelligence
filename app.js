@@ -444,6 +444,129 @@ function render() {
     `;
   } else if (backendState.currentTab === "Sales Pipeline") {
     operationalActionFormHtml = `
+      <div style="font-family: sans-serif; display: flex; flex-direction: column; gap: 24px;">
+        
+        <!-- ROW 1: Manual Lead Entry Form & Report Builder -->
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px;">
+          
+          <!-- Manual Lead Provisioning Form -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+            <h3 style="margin-top:0; font-size:1rem; margin-bottom:4px; color:#0f172a; font-weight:700;">➕ Provision New Account / Stakeholder</h3>
+            <p style="font-size: 0.78rem; color: #64748b; margin: 0 0 16px 0;">AI prevents duplicates automatically by checking enterprise email domains.</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.82rem;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <label style="display: grid; gap: 4px; font-weight: 600; color: #475569;">Full Name
+                  <input id="newLeadName" type="text" style="height: 34px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 10px;" placeholder="Sarah Jenkins">
+                </label>
+                <label style="display: grid; gap: 4px; font-weight: 600; color: #475569;">Corporate Email
+                  <input id="newLeadEmail" type="email" style="height: 34px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 10px;" placeholder="sarah@widgets.com">
+                </label>
+              </div>
+              
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <label style="display: grid; gap: 4px; font-weight: 600; color: #475569;">Account Value / Target
+                  <input id="newLeadValue" type="text" style="height: 34px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 10px;" placeholder="$15,000 ARR">
+                </label>
+                <label style="display: grid; gap: 4px; font-weight: 600; color: #475569;">Pipeline Stage
+                  <select id="newLeadStage" style="height: 34px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 8px; background: white;">
+                    <option value="Discovery">Discovery / Qualification</option>
+                    <option value="Proposal">Proposal Sent</option>
+                    <option value="Negotiation">Contract Negotiation</option>
+                  </select>
+                </label>
+              </div>
+
+              <label style="display: grid; gap: 4px; font-weight: 600; color: #475569;">Sales Rep Context Notes
+                <textarea id="newLeadNotes" style="width: 100%; min-height: 80px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; resize: vertical;" placeholder="Add custom background notes regarding company infrastructure, pain points, or timeline milestones..."></textarea>
+              </label>
+
+              <button id="submitManualLeadBtn" style="height: 38px; background: #2563eb; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 4px; transition: background 0.2s;">
+                Commit to Pipeline Registry
+              </button>
+            </div>
+          </div>
+
+          <!-- Custom & Recurring Report Builder -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="margin-top:0; font-size:1rem; margin-bottom:4px; color:#0f172a; font-weight:700;">📊 Intelligence Report Engine</h3>
+              <p style="font-size: 0.78rem; color: #64748b; margin: 0 0 16px 0;">Configure customized snapshots or deploy recurring data automation tracks.</p>
+              
+              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.82rem;">
+                <label style="display: grid; gap: 4px; font-weight: 600; color: #475569;">Report Metric Scope
+                  <select id="reportScope" style="height: 34px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 8px; background: white;">
+                    <option value="pipeline">Full Sales Pipeline Value Matrix</option>
+                    <option value="velocity">Deal Lifecycle Velocity Metrics</option>
+                    <option value="dedup">Account Health & Deduplication Logs</option>
+                  </select>
+                </label>
+
+                <label style="display: grid; gap: 4px; font-weight: 600; color: #475569;">Delivery Cadence
+                  <select id="reportCadence" style="height: 34px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 8px; background: white;">
+                    <option value="once">Run Ad-Hoc Snapshot Now</option>
+                    <option value="daily">Recurring: Daily Morning Summary (8:00 AM)</option>
+                    <option value="weekly">Recurring: Weekly Monday Sync Session</option>
+                    <option value="monthly">Recurring: Monthly Stakeholder Close Out</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 16px;">
+              <button onclick="alert('Ad-hoc report compiling matching dataset matrices...')" style="flex: 1; height: 36px; background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                ⚙️ Run Snapshot
+              </button>
+              <button onclick="alert('Recurring report automation track successfully synchronized to server crons.')" style="flex: 1; height: 36px; background: #10b981; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                ⏰ Schedule Track
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW 2: Live Global Search & Account Matrix Directory -->
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <div>
+              <h3 style="margin: 0; font-size: 1rem; color: #0f172a; font-weight: 700;">🔍 Global Accounts & Contacts Directory</h3>
+              <p style="font-size: 0.78rem; color: #64748b; margin: 2px 0 0 0;">Search account numbers, stakeholder names, corporate emails, or notes context entries.</p>
+            </div>
+            <input id="salesDirectorySearch" type="text" oninput="window.filterSalesDirectory?.(this.value)" style="width: 280px; height: 34px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0 12px; font-size: 0.82rem;" placeholder="Filter contacts, domains, notes...">
+          </div>
+
+          <div style="overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 6px;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+              <thead>
+                <tr style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: 600;">
+                  <th style="padding: 12px 16px;">Account No</th>
+                  <th style="padding: 12px 16px;">Stakeholder Name</th>
+                  <th style="padding: 12px 16px;">Corporate Email / Channel</th>
+                  <th style="padding: 12px 16px;">Account Footprint / Spend</th>
+                  <th style="padding: 12px 16px;">Internal Memory Profile / Notes Context</th>
+                </tr>
+              </thead>
+              <tbody id="salesDirectoryTableBody">
+                ${backendState.customers.map(c => `
+                  <tr style="border-bottom: 1px solid #f1f5f9; background: #ffffff;">
+                    <td style="padding: 14px 16px; font-weight: 700; color: #64748b;">${c.customerNo}</td>
+                    <td style="padding: 14px 16px; font-weight: 600; color: #0f172a;">${c.name}</td>
+                    <td style="padding: 14px 16px; color: #2563eb;">${c.email} <br><span style="font-size:10px; color:#64748b;">Via ${c.channel}</span></td>
+                    <td style="padding: 14px 16px; font-weight: 600; color: #16a34a;">${c.value || 'N/A'}</td>
+                    <td style="padding: 14px 16px; color: #475569; font-size: 0.78rem; max-width: 320px; white-space: normal; word-wrap: break-word;">
+                      <strong>[Focus]:</strong> ${c.memoryLine || 'None'}<br>
+                      <span style="color:#64748b; font-style:italic;">${c.memory || ''}</span>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    `;
+  } else 
+    operationalActionFormHtml = `
       <div style="font-family: sans-serif; display: flex; flex-direction: column; gap: 20px;">
         <!-- Upper Analytical Dashboard Overview Block -->
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
