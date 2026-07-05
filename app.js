@@ -373,7 +373,7 @@ function render() {
           <label style="display:grid; gap:4px; font-weight:600; color:#475569;">Company Link Selection<select id="contactCompanyLink" style="height:32px; border:1px solid #cbd5e1; border-radius:6px; padding:0 8px; font-size:0.82rem;">
             ${uniqueCompanies.map(comp => `<option value="${comp}">${comp}</option>`).join('')}
           </select></label>
-          <label style="display:grid; gap:4px; font-weight:600; color:#475569;">Support Notes for the Contact<textarea style="width: 100%; min-height: 180px; padding: 12px; font-family: monospace; font-size: 14px; line-height: 1.5; border: 1px solid #d1d5db; border-radius: 6px; resize: vertical; box-sizing: border-box;"></textarea></label>
+          <label style="display:grid; gap:4px; font-weight:600; color:#475569;">Support Notes for the Contact<textarea id="liveReplyInputTextArea" style="width: 100%; min-height: 180px; padding: 12px; font-family: monospace; font-size: 14px; line-height: 1.5; border: 1px solid #d1d5db; border-radius: 6px; resize: vertical; box-sizing: border-box;"></textarea></label>
           <button id="submitCreateContactBtn" style="height:36px; background:#16a34a; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer; margin-top:6px;">Commit to Database Registry</button>
         </div>
       `;
@@ -386,7 +386,7 @@ function render() {
           </select></label>
           <label style="display:grid; gap:4px; font-weight:600; color:#475569;">Reason for Escalation <select id="escalateReason" style="height:34px; border:1px solid #cbd5e1; border-radius:6px; padding:0 8px;"><option value="SLA Breach Risk">Critical SLA Breach Risk</option><option value="Technical Dependency">Complex Infrastructure Dependency</option><option value="Sentiment Escalation">Severe Negative Sentiment</option></select></label>
           <label style="display:grid; gap:4px; font-weight:600; color:#475569;">Escalation Priority <select id="escalatePriority" style="height:34px; border:1px solid #cbd5e1; border-radius:6px; padding:0 8px;"><option value="Standard Escalation">Standard Escalation</option><option value="Urgent Queue Focus">Urgent Queue Focus</option><option value="Critical Emergency SLA">Critical Emergency SLA</option></select></label>
-          <label style="display:grid; gap:4px; font-weight:600; color:#475569;">Handoff Context Notes <textarea style="width: 100%; min-height: 180px; padding: 12px; font-family: monospace; font-size: 14px; line-height: 1.5; border: 1px solid #d1d5db; border-radius: 6px; resize: vertical; box-sizing: border-box;"></textarea></label>
+          <label style="display:grid; gap:4px; font-weight:600; color:#475569;">Handoff Context Notes <textarea id="liveReplyInputTextArea" style="width: 100%; min-height: 180px; padding: 12px; font-family: monospace; font-size: 14px; line-height: 1.5; border: 1px solid #d1d5db; border-radius: 6px; resize: vertical; box-sizing: border-box;"></textarea></label>
           <button id="submitEscalateTicketBtn" style="height:36px; background:#2563eb; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer; margin-top:4px;">Dispatch to Supervisor Queue</button>
         </div>
       `;
@@ -439,7 +439,7 @@ function render() {
               </div>
             </div>
             <div style="border-top:1px solid #e2e8f0; padding-top:16px;">
-              <textarea style="width: 100%; min-height: 180px; padding: 12px; font-family: monospace; font-size: 14px; line-height: 1.5; border: 1px solid #d1d5db; border-radius: 6px; resize: vertical; box-sizing: border-box;"></textarea>
+              <textarea id="liveReplyInputTextArea" style="width: 100%; min-height: 180px; padding: 12px; font-family: monospace; font-size: 14px; line-height: 1.5; border: 1px solid #d1d5db; border-radius: 6px; resize: vertical; box-sizing: border-box;"></textarea>
               <button id="triggerAIOperationalDraftBtn" style="margin-top:10px; margin-right:8px; height:36px; padding:0 14px; background:#eff6ff; color:#2563eb; border:none; border-radius:6px; font-weight:700; cursor:pointer;">🤖 Draft with Customer Memory</button>
               <button id="approveAndSendReplyBtn" style="margin-top:10px; height:36px; padding:0 14px; background:#10b981; color:#ffffff; border:none; border-radius:6px; font-weight:700; cursor:pointer;">✉️ Approve & Send Response</button>
             </div>
