@@ -434,74 +434,59 @@ function render() {
                 <div style="font-size: 13px; color: #64748b; line-height: 1.4;">
                   <div><strong>Inbound Channel:</strong> Live Chat Widget (Website)</div>
                   <div><strong>Ticket Priority Profile:</strong> ${tk.priority}</div>
-                  <div><strong>Assignee Scope:</strong> ${tk.assignee}</div>
+                  <div><strong>Assignee Scope:</strong> ${tk.assignee || 'Unassigned'}</div>
                 </div>
                 <div style="background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; flex-grow: 1;">
-                  <strong style="font-size: 12px; color: #475569; display: block; margin-bottom: 4px;">Inbound Context Summary:</strong>
-                  <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #334155;">
-                    Operational telemetry pipeline registers execution drift markers within target environment blocks. User inquiry notes indicate potential subscription scale validation questions.
+                  <strong style="font-size: 12px; color: #475569; display: block; margin-bottom: 4px;">Inbound Subject Issue:</strong>
+                  <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #334155; font-weight: 600;">
+                    ${tk.subject}
                   </p>
                 </div>
               </div>
 
               <div id="dynamicProfileHubContainer" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); max-height: 320px; overflow-y: auto;">
                 
-                <div id="crmLeadViewBlock">
-                  <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
-                    <div>
-                      <span style="background: #fef3c7; color: #d97706; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">Lead / Potential Customer</span>
-                      <h3 style="margin: 4px 0 2px 0; font-size: 16px; color: #0f172a;">Widgets Express</h3>
-                      <a href="#" style="font-size: 12px; color: #2563eb; text-decoration: none;">www.widgetsexpress.com</a>
-                    </div>
-                    <div style="text-align: right;">
-                      <div style="font-size: 16px; font-weight: 800; color: #10b981;">84%</div>
-                      <span style="font-size: 9px; color: #64748b; font-weight: 600; text-transform: uppercase;">AI Deal Score</span>
-                    </div>
-                  </div>
-
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: #f8fafc; padding: 10px; border-radius: 6px; font-size: 11px; border: 1px solid #f1f5f9; line-height: 1.3;">
-                    <div><strong>ID:</strong> <code style="color:#0f172a; font-weight:600;">LEAD1000</code></div>
-                    <div><strong>Stage:</strong> <span style="color:#2563eb; font-weight:600;">Discovery Phase</span></div>
-                    <div><strong>Size:</strong> 145 Employees</div>
-                    <div><strong>Revenue:</strong> $40M / $90M Val</div>
-                    <div><strong>Budget:</strong> $15k - $25k/yr</div>
-                    <div><strong>Source:</strong> Web Contact Form</div>
-                  </div>
-
-                  <div style="margin-top: 10px; font-size: 11px; line-height: 1.4;">
-                    <p style="margin: 3px 0;"><strong style="color: #e11d48;">Pain Points:</strong> Platform latency & unlinked representative tracking silos.</p>
-                    <p style="margin: 3px 0;"><strong style="color: #4f46e5;">Next Step:</strong> Coordinate interactive deep-dive tech demonstration.</p>
-                  </div>
-
-                  <h4 style="margin: 10px 0 4px 0; font-size: 11px; text-transform: uppercase; color: #64748b; border-top: 1px dashed #e2e8f0; padding-top: 6px;">💼 Executive Directory (AI Crawled)</h4>
-                  <div style="font-size: 11px; color: #334155; line-height: 1.3; background: #fafafa; padding: 6px; border-radius: 4px;">
-                    <div>• <strong>CEO:</strong> Elena Rostova <span style="font-size:9px; color:#64748b;">(Public Profile Found)</span></div>
-                    <div>• <strong>CTO:</strong> Marcus Vance <span style="font-size:9px; color:#10b981;">● Monitored Connection</span></div>
-                  </div>
-
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; border-top: 1px dashed #e2e8f0; padding-top: 6px;">
-                    <h4 style="margin: 0; font-size: 11px; text-transform: uppercase; color: #64748b;">👥 Rep Matrix</h4>
-                    <button type="button" style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 9px; padding: 1px 5px; font-weight: 600; cursor: pointer;">+ Add Rep</button>
-                  </div>
-
-                  <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px;">
-                    <div style="font-size: 11px; border: 1px solid #e2e8f0; padding: 5px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
-                      <div>
-                        <strong>Marie Curie</strong> <code style="font-size:9px; color:#64748b;">(REPL1001)</code> <span style="color:#10b981; font-size:9px;">★ Primary</span>
-                        <div style="color:#64748b; font-size:10px;">marie@widgetsexpress.com | Zone: EST</div>
+                ${(() => {
+                  const currentCustomerEmail = tk.customer || '';
+                  const derivedName = currentCustomerEmail.split('@')[0].split('.')[0];
+                  const formattedName = derivedName.charAt(0).toUpperCase() + derivedName.slice(1);
+                  
+                  // If it's Maya or an unmapped contact email, render their exact dynamic Lead record parameters
+                  if (currentCustomerEmail.includes('maya') || currentCustomerEmail.includes('@')) {
+                    return `
+                    <div id="crmLeadViewBlock">
+                      <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                        <div>
+                          <span style="background: #eff6ff; color: #2563eb; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">Inbound Pipeline Lead</span>
+                          <h3 style="margin: 4px 0 2px 0; font-size: 16px; color: #0f172a;">Potential Corporate Account</h3>
+                          <a href="#" style="font-size: 12px; color: #2563eb; text-decoration: none;">View Full Customer Profile ↗</a>
+                        </div>
+                        <div style="text-align: right;">
+                          <div style="font-size: 16px; font-weight: 800; color: #3b82f6;">78%</div>
+                          <span style="font-size: 9px; color: #64748b; font-weight: 600; text-transform: uppercase;">AI Intent Score</span>
+                        </div>
                       </div>
-                      <span style="font-size: 9px; font-weight:700; color:#10b981; background:#f0fdf4; padding:1px 3px; border-radius:4px;">Active</span>
-                    </div>
-                    <div style="font-size: 11px; border: 1px solid #f1f5f9; background: #f8fafc; opacity: 0.5; padding: 5px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
-                      <div>
-                        <strong style="text-decoration: line-through;">George Eastman</strong> <code style="font-size:9px;">(REPL1003)</code>
-                        <div style="font-size: 10px; color:#ef4444;">Left Company (AI LinkedIn Trigger)</div>
-                      </div>
-                      <span style="font-size: 9px; font-weight:700; color:#64748b; background:#e2e8f0; padding:1px 3px; border-radius:4px;">Stale</span>
-                    </div>
-                  </div>
 
-                </div>
+                      <div style="display: grid; grid-template-columns: 1fr; gap: 4px; background: #f8fafc; padding: 10px; border-radius: 6px; font-size: 11px; border: 1px solid #f1f5f9; line-height: 1.4;">
+                        <div><strong>Linked Core Contact:</strong> ${currentCustomerEmail}</div>
+                        <div><strong>Inferred Customer Number:</strong> <code style="color:#0f172a; font-weight:600;">LEAD1004</code></div>
+                        <div><strong>Pipeline Assignment Stage:</strong> <span style="color:#eab308; font-weight:600;">Awaiting Ingestion Sync</span></div>
+                        <div><strong>Ticket Complication Log:</strong> Flagged as outstanding for billing parameters.</div>
+                      </div>
+
+                      <h4 style="margin: 12px 0 4px 0; font-size: 11px; text-transform: uppercase; color: #64748b; border-top: 1px dashed #e2e8f0; padding-top: 6px;">👥 Inbound Contact Stakeholders</h4>
+                      <div style="margin-top: 4px; display: flex; flex-direction: column; gap: 4px;">
+                        <div style="font-size: 11px; border: 1px solid #e2e8f0; padding: 5px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; background: #ffffff;">
+                          <div>
+                            <strong>${formattedName}</strong> <code style="font-size:9px; color:#64748b;">(REPL1005)</code> <span style="color:#2563eb; font-size:9px;">★ Source Channel</span>
+                            <div style="color:#64748b; font-size:10px;">${currentCustomerEmail}</div>
+                          </div>
+                          <span style="font-size: 9px; font-weight:700; color:#2563eb; background:#eff6ff; padding:1px 3px; border-radius:4px;">Inbound</span>
+                        </div>
+                      </div>
+                    </div>`;
+                  }
+                })()}
 
               </div>
             </div>
